@@ -1,3 +1,6 @@
+# Käyttöliittymien kuvat
 rfid.png
-build-BankEXE-Desktop_Qt_5_15_2_MinGW_32_bit-Debug
-BankEXE/BankEXE.pro.user
+
+#Qt
+*build-*
+*.pro.user
