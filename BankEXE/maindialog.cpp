@@ -32,7 +32,7 @@ void MainDialog::on_withdrawButton_clicked()
 
 void MainDialog::on_balanceButton_clicked()
 {
-    ui->infoLabel->setText("Sulla mitää rahaa oo");
+
 }
 
 void MainDialog::on_transactionButton_clicked()
@@ -46,7 +46,21 @@ void MainDialog::on_transferButton_clicked()
 }
 
 void MainDialog::on_logoutButton_clicked()
-{
-    //Mahdollisesti jokin teksti käyttäjälle?
+{   /*
+    QMessageBox message;
+    message.setText("Kirjaudutaan ulos..");
+    int counter = 10;
+    QTimer timer;
+    QObject::connect(&timer, &QTimer::timeout, [&message,&counter,&timer]()->void
+    {
+        if(--counter < 0)
+        {
+            timer.stop();
+            message.close();
+        }
+        timer.start(1000);
+        message.exec();
+    });
+    */
     this->close();
 }

@@ -30,10 +30,13 @@ void PINDialog::on_sendButton_clicked()
     else {
         if(attempts < 3)
         {
+            //Jos salasana syötetään väärin, annetaan virheilmoitus
+            //Huom!! Täytyy varmaan luoda oliot erikseen
             QMessageBox::warning(this, "Virheilmoitus", "Väärä salasana!");
         }
         attempts++;
         if(attempts > 3) {
+            //Jos salasana syötetään väärin kolme kertaa, annetaan virheilmoitus ja lukitaan kortti
             QMessageBox::warning(this, "Virheilmoitus", "PIN-koodi syötetty väärin liian monta kertaa! Kortti lukittu!");
             //Lukitaan kortti
         }
