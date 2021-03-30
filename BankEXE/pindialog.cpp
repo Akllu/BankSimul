@@ -7,6 +7,7 @@ PINDialog::PINDialog(QWidget *parent) :
     ui(new Ui::PINDialog)
 {
     ui->setupUi(this);
+    attempts = 1;
 }
 
 PINDialog::~PINDialog()
@@ -27,8 +28,16 @@ void PINDialog::on_sendButton_clicked()
         ptrMainDialog->exec();
     }
     else {
-        qDebug() << "Väärä salasana!!!!!";
-    }
+        if(attempts < 3)
+        {
+            QMessageBox::warning(this, "Virheilmoitus", "Väärä salasana!");
+        }
+        attempts++;
+        if(attempts > 3) {
+            QMessageBox::warning(this, "Virheilmoitus", "PIN-koodi syötetty väärin liian monta kertaa! Kortti lukittu!");
+            //Lukitaan kortti
+        }
+        }
     delete ptrMainDialog;
     ptrMainDialog = nullptr;
 }

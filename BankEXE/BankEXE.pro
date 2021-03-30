@@ -12,18 +12,21 @@ SOURCES += \
     main.cpp \
     maindialog.cpp \
     mainwindow.cpp \
+    otherwithdrawdialog.cpp \
     pindialog.cpp \
     withdrawdialog.cpp
 
 HEADERS += \
     maindialog.h \
     mainwindow.h \
+    otherwithdrawdialog.h \
     pindialog.h \
     withdrawdialog.h
 
 FORMS += \
     maindialog.ui \
     mainwindow.ui \
+    otherwithdrawdialog.ui \
     pindialog.ui \
     withdrawdialog.ui
 

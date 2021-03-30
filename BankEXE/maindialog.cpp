@@ -32,7 +32,7 @@ void MainDialog::on_withdrawButton_clicked()
 
 void MainDialog::on_balanceButton_clicked()
 {
-
+    ui->infoLabel->setText("Sulla mitää rahaa oo");
 }
 
 void MainDialog::on_transactionButton_clicked()

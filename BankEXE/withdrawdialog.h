@@ -2,6 +2,7 @@
 #define WITHDRAWDIALOG_H
 
 #include <QDialog>
+#include "otherwithdrawdialog.h"
 
 namespace Ui {
 class WithdrawDialog;
@@ -27,6 +28,8 @@ private slots:
 
 private:
     Ui::WithdrawDialog *ui;
+    otherWithdrawDialog *ptrOtherWithdraw;
+    double otherAmount;
 
 signals:
     void sendSignal();

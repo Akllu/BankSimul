@@ -2,6 +2,7 @@
 #define PINDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "maindialog.h"
 
 namespace Ui {
@@ -23,6 +24,7 @@ private:
     Ui::PINDialog *ui;
     MainDialog *ptrMainDialog;
     short number;
+    short attempts;
 };
 
 #endif // PINDIALOG_H
