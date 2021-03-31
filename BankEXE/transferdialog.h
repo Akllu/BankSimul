@@ -2,6 +2,7 @@
 #define TRANSFERDIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class transferDialog;
@@ -22,6 +23,8 @@ private slots:
 
 private:
     Ui::transferDialog *ui;
+    double transferAmount;
+    QString transferAccount;
 };
 
 #endif // TRANSFERDIALOG_H
