@@ -32,6 +32,13 @@ void MainDialog::on_withdrawButton_clicked()
 
 void MainDialog::on_balanceButton_clicked()
 {
+    ptrBalance = new balanceDialog;
+    ptrBalance->setWindowTitle("BankSimul");
+    ptrBalance->show();
+    this->hide();
+    ptrBalance->exec();
+    delete ptrBalance;
+    ptrBalance = nullptr;
 
 }
 
