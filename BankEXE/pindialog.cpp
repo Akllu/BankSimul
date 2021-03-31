@@ -26,6 +26,7 @@ void PINDialog::on_sendButton_clicked()
         ptrMainDialog->show();
         this->close();
         ptrMainDialog->exec();
+        attempts = 1;
     }
     else {
         if(attempts < 3)

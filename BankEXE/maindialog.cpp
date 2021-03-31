@@ -32,16 +32,36 @@ void MainDialog::on_withdrawButton_clicked()
 
 void MainDialog::on_balanceButton_clicked()
 {
+    ptrBalance = new balanceDialog;
+    ptrBalance->setWindowTitle("BankSimul");
+    ptrBalance->show();
+    this->hide();
+    ptrBalance->exec();
+    delete ptrBalance;
+    ptrBalance = nullptr;
 
 }
 
 void MainDialog::on_transactionButton_clicked()
 {
-
+    ptrTransactions = new transactionsDialog;
+    ptrTransactions->setWindowTitle("BankSimul");
+    ptrTransactions->show();
+    this->hide();
+    ptrTransactions->exec();
+    delete ptrTransactions;
+    ptrTransactions = nullptr;
 }
 
 void MainDialog::on_transferButton_clicked()
 {
+    ptrTransfer = new transferDialog;
+    ptrTransfer->setWindowTitle("BankSimul");
+    ptrTransfer->show();
+    this->hide();
+    ptrTransfer->exec();
+    delete ptrTransfer;
+    ptrTransfer = nullptr;
 
 }
 
