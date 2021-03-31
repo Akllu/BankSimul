@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/rfid.jpg");
-    ui->pictureLabel->setPixmap(pic.scaled(400,400,Qt::KeepAspectRatio));
+    QPixmap pic("C:/rfid.png");
+    ui->pictureLabel->setPixmap(pic.scaled(500,500,Qt::KeepAspectRatio));
     setWindowTitle("BankSimul");
 }
 
