@@ -55,6 +55,13 @@ void MainDialog::on_transactionButton_clicked()
 
 void MainDialog::on_transferButton_clicked()
 {
+    ptrTransfer = new transferDialog;
+    ptrTransfer->setWindowTitle("BankSimul");
+    ptrTransfer->show();
+    this->hide();
+    ptrTransfer->exec();
+    delete ptrTransfer;
+    ptrTransfer = nullptr;
 
 }
 

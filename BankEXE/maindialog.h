@@ -7,6 +7,7 @@
 #include "withdrawdialog.h"
 #include "balancedialog.h"
 #include "transactionsdialog.h"
+#include "transferdialog.h"
 
 namespace Ui {
 class MainDialog;
@@ -35,6 +36,7 @@ private:
     WithdrawDialog *ptrWithdraw;
     balanceDialog *ptrBalance;
     transactionsDialog *ptrTransactions;
+    transferDialog *ptrTransfer;
 
 
 };
