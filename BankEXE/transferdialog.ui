@@ -21,10 +21,10 @@ color: rgb(255, 255, 255);</string>
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <item row="4" column="0">
-      <widget class="QLabel" name="headerLabel4">
+      <widget class="QLabel" name="headerLabel5">
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -34,28 +34,11 @@ color: rgb(255, 255, 255);</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0" colspan="3">
-      <widget class="QLabel" name="nameLabel">
+     <item row="5" column="0">
+      <widget class="QLabel" name="headerLabel6">
        <property name="font">
         <font>
          <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Tähän nimi</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="headerLabel5">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -69,7 +52,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="headerLabel">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>24</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -119,7 +102,7 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -153,10 +136,10 @@ color: rgb(255, 255, 255);</string>
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="headerLabel3">
+      <widget class="QLabel" name="headerLabel4">
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -170,7 +153,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="balanceLabel">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -182,10 +165,10 @@ color: rgb(255, 255, 255);</string>
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="headerLabel2">
+      <widget class="QLabel" name="headerLabel3">
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -199,7 +182,7 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="accountLabel">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -220,7 +203,7 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -232,6 +215,38 @@ color: rgb(0, 0, 0);</string>
        </property>
        <property name="singleStep">
         <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="headerLabel2">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kirjautuneena:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <widget class="QLabel" name="nameLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tähän nimi</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
