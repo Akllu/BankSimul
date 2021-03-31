@@ -15,6 +15,7 @@ SOURCES += \
     mainwindow.cpp \
     otherwithdrawdialog.cpp \
     pindialog.cpp \
+    transactionsdialog.cpp \
     withdrawdialog.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     mainwindow.h \
     otherwithdrawdialog.h \
     pindialog.h \
+    transactionsdialog.h \
     withdrawdialog.h
 
 FORMS += \
@@ -31,6 +33,7 @@ FORMS += \
     mainwindow.ui \
     otherwithdrawdialog.ui \
     pindialog.ui \
+    transactionsdialog.ui \
     withdrawdialog.ui
 
 # Default rules for deployment.

@@ -6,6 +6,7 @@
 #include <QTimer>
 #include "withdrawdialog.h"
 #include "balancedialog.h"
+#include "transactionsdialog.h"
 
 namespace Ui {
 class MainDialog;
@@ -33,6 +34,7 @@ private:
     Ui::MainDialog *ui;
     WithdrawDialog *ptrWithdraw;
     balanceDialog *ptrBalance;
+    transactionsDialog *ptrTransactions;
 
 
 };

@@ -44,7 +44,13 @@ void MainDialog::on_balanceButton_clicked()
 
 void MainDialog::on_transactionButton_clicked()
 {
-
+    ptrTransactions = new transactionsDialog;
+    ptrTransactions->setWindowTitle("BankSimul");
+    ptrTransactions->show();
+    this->hide();
+    ptrTransactions->exec();
+    delete ptrTransactions;
+    ptrTransactions = nullptr;
 }
 
 void MainDialog::on_transferButton_clicked()
