@@ -26,4 +26,5 @@ void transactionsDialog::on_previousButton_clicked()
 void transactionsDialog::on_closeButton_clicked()
 {
     this->close();
+    emit closeSignal();
 }

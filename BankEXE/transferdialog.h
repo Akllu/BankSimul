@@ -16,9 +16,11 @@ public:
     explicit transferDialog(QWidget *parent = nullptr);
     ~transferDialog();
 
+signals:
+    void closeSignal();
+
 private slots:
     void on_nextButton_clicked();
-
     void on_closeButton_clicked();
 
 private:

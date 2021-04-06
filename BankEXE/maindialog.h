@@ -22,7 +22,7 @@ public:
     ~MainDialog();
 
 public slots:
-    void receiveSignal();
+    void returnToDialog();
 
 private slots:
     void on_withdrawButton_clicked();
@@ -37,8 +37,6 @@ private:
     balanceDialog *ptrBalance;
     transactionsDialog *ptrTransactions;
     transferDialog *ptrTransfer;
-
-
 };
 
 #endif // MAINDIALOG_H

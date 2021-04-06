@@ -16,11 +16,18 @@ otherWithdrawDialog::~otherWithdrawDialog()
 
 void otherWithdrawDialog::on_withdrawButton_clicked()
 {
-    amount = ui->amountEdit->text().toDouble();
+    amount = ui->amountEdit->text().toDouble(); //Otetaan käyttäjän syöttämä rahasumma talteen
     this->close();
 }
 
 double otherWithdrawDialog::returnAmount()
 {
     return amount;
+}
+
+void otherWithdrawDialog::on_closeButton_clicked()
+{
+    ui->amountEdit->setText("");    //Nollataan summa jos näkymästä palataan takaisin
+    this->close();
+    emit closeSignal();
 }

@@ -16,4 +16,5 @@ balanceDialog::~balanceDialog()
 void balanceDialog::on_closeButton_clicked()
 {
     this->close();
+    emit closeSignal();
 }

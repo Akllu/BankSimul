@@ -7,24 +7,22 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QPixmap pic("C:/rfid.png");
-    ui->pictureLabel->setPixmap(pic.scaled(500,500,Qt::KeepAspectRatio));
+    QPixmap pic("C:/rfid.png"); //HUOM! Kuvan osoite
+    ui->pictureLabel->setPixmap(pic.scaled(500,500,Qt::KeepAspectRatio));   //Skaalataan kuva
     setWindowTitle("BankSimul");
+    ptrPINDialog = new PINDialog;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete ptrPINDialog;
+    ptrPINDialog = nullptr;
 }
-
 
 void MainWindow::on_pushButton_clicked()
 {
-    ptrPINDialog = new PINDialog;
     ptrPINDialog->setWindowTitle("BankSimul");
+    //this->hide();
     ptrPINDialog->show();
-    this->close();
-    ptrPINDialog->exec();
-    delete ptrPINDialog;
-    ptrPINDialog = nullptr;
 }

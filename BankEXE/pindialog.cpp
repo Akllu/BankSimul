@@ -1,34 +1,36 @@
 #include "pindialog.h"
 #include "ui_pindialog.h"
-#include <QDebug>
 
 PINDialog::PINDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PINDialog)
 {
     ui->setupUi(this);
+    ptrMainDialog = new MainDialog;
     attempts = 1;
 }
 
 PINDialog::~PINDialog()
 {
     delete ui;
+    delete ptrMainDialog;
+    ptrMainDialog = nullptr;
 }
 
 void PINDialog::on_sendButton_clicked()
 {
     //PIN-koodin tarkistus
-    ptrMainDialog = new MainDialog;
     ptrMainDialog->setWindowTitle("BankSimul");
-    number = ui->lineEdit->text().toDouble();
+    number = ui->lineEdit->text().toDouble();   //Otetaan käyttäjän syöttämä PIN-koodi talteen
     if(number == 4444)
     {
-        ptrMainDialog->show();
         this->close();
-        ptrMainDialog->exec();
+        ptrMainDialog->show();
+        ui->lineEdit->setText("");  //Nollataan tiedot
         attempts = 1;
     }
-    else {
+    else
+    {
         if(attempts < 3)
         {
             //Jos salasana syötetään väärin, annetaan virheilmoitus
@@ -41,7 +43,5 @@ void PINDialog::on_sendButton_clicked()
             QMessageBox::warning(this, "Virheilmoitus", "PIN-koodi syötetty väärin liian monta kertaa! Kortti lukittu!");
             //Lukitaan kortti
         }
-        }
-    delete ptrMainDialog;
-    ptrMainDialog = nullptr;
+    }
 }
