@@ -15,11 +15,12 @@ public:
     explicit transactionsDialog(QWidget *parent = nullptr);
     ~transactionsDialog();
 
+signals:
+    void closeSignal();
+
 private slots:
     void on_nextButton_clicked();
-
     void on_previousButton_clicked();
-
     void on_closeButton_clicked();
 
 private:

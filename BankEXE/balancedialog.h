@@ -15,6 +15,9 @@ public:
     explicit balanceDialog(QWidget *parent = nullptr);
     ~balanceDialog();
 
+signals:
+    void closeSignal();
+
 private slots:
     void on_closeButton_clicked();
 

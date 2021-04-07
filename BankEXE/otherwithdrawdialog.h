@@ -2,6 +2,7 @@
 #define OTHERWITHDRAWDIALOG_H
 
 #include <QDialog>
+#include <QIntValidator>
 
 namespace Ui {
 class otherWithdrawDialog;
@@ -16,8 +17,12 @@ public:
     ~otherWithdrawDialog();
     double returnAmount();
 
+signals:
+    void closeSignal();
+
 private slots:
     void on_withdrawButton_clicked();
+    void on_closeButton_clicked();
 
 private:
     Ui::otherWithdrawDialog *ui;

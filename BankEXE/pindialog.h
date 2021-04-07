@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QIntValidator>
 #include "maindialog.h"
 
 namespace Ui {

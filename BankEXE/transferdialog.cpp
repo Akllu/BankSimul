@@ -34,5 +34,8 @@ void transferDialog::on_nextButton_clicked()
 
 void transferDialog::on_closeButton_clicked()
 {
+    ui->accountLineEdit->setText("");   //Nollataan tiedot jos näkymästä palataan takaisin
+    ui->amountSpinBox->setValue(0.00);
     this->close();
+    emit closeSignal();
 }

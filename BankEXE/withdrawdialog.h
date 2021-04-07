@@ -16,6 +16,12 @@ public:
     explicit WithdrawDialog(QWidget *parent = nullptr);
     ~WithdrawDialog();
 
+public slots:
+    void returnToDialog();
+
+signals:
+    void closeSignal();
+
 private slots:
     void on_button20_clicked();
     void on_button40_clicked();
@@ -31,8 +37,6 @@ private:
     otherWithdrawDialog *ptrOtherWithdraw;
     double otherAmount;
 
-signals:
-    void sendSignal();
 
 };
 

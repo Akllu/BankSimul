@@ -3,4 +3,4 @@ rfid.png
 
 #Qt
 *build-*
-*.pro.user
+*.pro.user*
