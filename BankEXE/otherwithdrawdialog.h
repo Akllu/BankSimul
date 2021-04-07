@@ -2,6 +2,7 @@
 #define OTHERWITHDRAWDIALOG_H
 
 #include <QDialog>
+#include <QIntValidator>
 
 namespace Ui {
 class otherWithdrawDialog;

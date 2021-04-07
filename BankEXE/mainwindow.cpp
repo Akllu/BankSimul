@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pictureLabel->setPixmap(pic.scaled(500,500,Qt::KeepAspectRatio));   //Skaalataan kuva
     setWindowTitle("BankSimul");
     ptrPINDialog = new PINDialog;
+
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +24,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     ptrPINDialog->setWindowTitle("BankSimul");
-    //this->hide();
+    this->hide();
     ptrPINDialog->show();
 }

@@ -6,6 +6,7 @@ otherWithdrawDialog::otherWithdrawDialog(QWidget *parent) :
     ui(new Ui::otherWithdrawDialog)
 {
     ui->setupUi(this);
+    ui->amountEdit->setValidator(new QIntValidator(0, 1000, this)); //Rajoitetaan käyttäjä syöttämään lukuja väliltä 0-9000
     amount = 0;
 }
 

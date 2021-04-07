@@ -6,6 +6,7 @@ PINDialog::PINDialog(QWidget *parent) :
     ui(new Ui::PINDialog)
 {
     ui->setupUi(this);
+    ui->lineEdit->setValidator(new QIntValidator(0, 1000, this));   //Rajoitetaan käyttäjä syöttämään 4-numeroinen PIN-koodi
     ptrMainDialog = new MainDialog;
     attempts = 1;
 }
