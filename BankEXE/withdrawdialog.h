@@ -2,6 +2,7 @@
 #define WITHDRAWDIALOG_H
 
 #include <QDialog>
+
 #include "otherwithdrawdialog.h"
 
 namespace Ui {
@@ -15,9 +16,6 @@ class WithdrawDialog : public QDialog
 public:
     explicit WithdrawDialog(QWidget *parent = nullptr);
     ~WithdrawDialog();
-
-public slots:
-    void returnToDialog();
 
 signals:
     void closeSignal();

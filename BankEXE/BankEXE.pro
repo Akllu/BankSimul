@@ -14,7 +14,6 @@ SOURCES += \
     maindialog.cpp \
     mainwindow.cpp \
     otherwithdrawdialog.cpp \
-    pindialog.cpp \
     transactionsdialog.cpp \
     transferdialog.cpp \
     withdrawdialog.cpp
@@ -24,7 +23,6 @@ HEADERS += \
     maindialog.h \
     mainwindow.h \
     otherwithdrawdialog.h \
-    pindialog.h \
     transactionsdialog.h \
     transferdialog.h \
     withdrawdialog.h
@@ -34,7 +32,6 @@ FORMS += \
     maindialog.ui \
     mainwindow.ui \
     otherwithdrawdialog.ui \
-    pindialog.ui \
     transactionsdialog.ui \
     transferdialog.ui \
     withdrawdialog.ui

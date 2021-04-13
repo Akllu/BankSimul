@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QIntValidator>
+#include <QMessageBox>
+#include <cmath>
 
 namespace Ui {
 class otherWithdrawDialog;

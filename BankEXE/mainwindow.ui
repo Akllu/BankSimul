@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>870</height>
+    <height>849</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,6 +21,12 @@ color: rgb(255, 255, 255);</string>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="headerLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="font">
        <font>
         <pointsize>24</pointsize>
@@ -50,6 +56,12 @@ color: rgb(255, 255, 255);</string>
     </item>
     <item>
      <widget class="QLabel" name="infoLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="font">
        <font>
         <pointsize>16</pointsize>
@@ -61,7 +73,7 @@ color: rgb(255, 255, 255);</string>
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="text">
-       <string>Aseta kortti lukijaan:</string>
+       <string>Ole hyvä ja aseta kortti lukijaan</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -74,7 +86,7 @@ color: rgb(255, 255, 255);</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../../../../../../rfid.png</pixmap>
+       <pixmap>Pictures/rfid.png</pixmap>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -101,7 +113,6 @@ color: rgb(255, 255, 255);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

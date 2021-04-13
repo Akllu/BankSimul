@@ -6,6 +6,7 @@ transactionsDialog::transactionsDialog(QWidget *parent) :
     ui(new Ui::transactionsDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Tilitapahtumat");
 }
 
 transactionsDialog::~transactionsDialog()

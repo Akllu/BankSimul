@@ -11,8 +11,6 @@
 #include "transactionsdialog.h"
 #include "transferdialog.h"
 
-//class MainWindow;
-
 namespace Ui {
 class MainDialog;
 }
@@ -22,11 +20,11 @@ class MainDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit MainDialog(QWidget *parent = nullptr);//, MainWindow *ptr = nullptr);
+    explicit MainDialog(QWidget *parent = nullptr);
     ~MainDialog();
 
 signals:
-    void sendSignal();
+    void logoutSignal();
 
 private slots:
     void on_withdrawButton_clicked();
@@ -41,7 +39,6 @@ private:
     balanceDialog *ptrBalance;
     transactionsDialog *ptrTransactions;
     transferDialog *ptrTransfer;
-    //MainWindow *ptrMainWindow
 
     int status;
 };

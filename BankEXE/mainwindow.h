@@ -8,9 +8,7 @@ Aleksi Kalliokoski TVT20SPL
 #include <QMainWindow>
 #include <QDebug>
 
-#include "pindialog.h"
 #include "maindialog.h"
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,15 +22,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-public slots:
-    void showMainWindow();
-
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    PINDialog *ptrPINDialog;
     MainDialog *ptrMainDialog;
 };
 

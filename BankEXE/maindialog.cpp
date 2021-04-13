@@ -2,7 +2,7 @@
 #include "ui_maindialog.h"
 //#include "mainwindow.h"
 
-MainDialog::MainDialog(QWidget *parent): //, MainWindow *ptr) :
+MainDialog::MainDialog(QWidget *parent):
     QDialog(parent),
     ui(new Ui::MainDialog)
 {
@@ -12,21 +12,18 @@ MainDialog::MainDialog(QWidget *parent): //, MainWindow *ptr) :
     ptrBalance = new balanceDialog;
     ptrTransactions = new transactionsDialog;
     ptrTransfer = new transferDialog;
-    //ptrMainWindow = ptr;
 
-    status = 1;
-
-    /*connect(ptrWithdraw, SIGNAL(closeSignal()), //Yhdistetään Sulje -painikkeet valikkoon palaamiseen
+    connect(ptrWithdraw, SIGNAL(closeSignal()), //Yhdistetään Sulje -painikkeet valikkoon palaamiseen
             this, SLOT(show()));
 
     connect(ptrBalance, SIGNAL(closeSignal()),
-            this, SLOT(returnToDialog()));
+            this, SLOT(show()));
 
     connect(ptrTransactions, SIGNAL(closeSignal()),
-            this, SLOT(returnToDialog()));
+            this, SLOT(show()));
 
     connect(ptrTransfer, SIGNAL(closeSignal()),
-            this, SLOT(returnToDialog()));*/
+            this, SLOT(show()));
 }
 
 MainDialog::~MainDialog()
@@ -44,32 +41,27 @@ MainDialog::~MainDialog()
 }
 
 void MainDialog::on_withdrawButton_clicked()
-{    
+{
     this->hide();
-    ptrWithdraw->exec();
-    this->show();
-    qDebug() << "Testi";
+    ptrWithdraw->show();
 }
 
 void MainDialog::on_balanceButton_clicked()
 {
     this->hide();
-    ptrBalance->exec();
-    this->show();
+    ptrBalance->show();
 }
 
 void MainDialog::on_transactionButton_clicked()
 {
     this->hide();
-    ptrTransactions->exec();
-    this->show();
+    ptrTransactions->show();
 }
 
 void MainDialog::on_transferButton_clicked()
 {
     this->hide();
-    ptrTransfer->exec();
-    this->show();
+    ptrTransfer->show();
 }
 
 void MainDialog::on_logoutButton_clicked()
@@ -90,11 +82,8 @@ void MainDialog::on_logoutButton_clicked()
         message.exec();
     });
     */
-    //status = 0;
 
     this->close();
-
-    //ptrMainWindow->show();
-    //emit sendSignal();
+    emit logoutSignal();
 }
 

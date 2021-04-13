@@ -6,6 +6,7 @@ transferDialog::transferDialog(QWidget *parent) :
     ui(new Ui::transferDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Tilisiirto");
     transferAmount = 0;
 }
 
