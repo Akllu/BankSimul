@@ -12,6 +12,7 @@ transferDialog::transferDialog(QWidget *parent) :
 transferDialog::~transferDialog()
 {
     delete ui;
+    ui = nullptr;
 }
 
 void transferDialog::on_nextButton_clicked()

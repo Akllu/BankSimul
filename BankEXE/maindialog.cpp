@@ -1,28 +1,38 @@
 #include "maindialog.h"
 #include "ui_maindialog.h"
+//#include "mainwindow.h"
 
-MainDialog::MainDialog(QWidget *parent) :
+MainDialog::MainDialog(QWidget *parent): //, MainWindow *ptr) :
     QDialog(parent),
     ui(new Ui::MainDialog)
 {
     ui->setupUi(this);
-    ptrWithdraw = new WithdrawDialog();
-    connect(ptrWithdraw, SIGNAL(closeSignal()), //Yhdistetään Sulje -painikkeet valikkoon palaamiseen
-            this, SLOT(returnToDialog()));
+    this->setWindowTitle("BankSimul");
+    ptrWithdraw = new WithdrawDialog;
     ptrBalance = new balanceDialog;
+    ptrTransactions = new transactionsDialog;
+    ptrTransfer = new transferDialog;
+    //ptrMainWindow = ptr;
+
+    status = 1;
+
+    /*connect(ptrWithdraw, SIGNAL(closeSignal()), //Yhdistetään Sulje -painikkeet valikkoon palaamiseen
+            this, SLOT(show()));
+
     connect(ptrBalance, SIGNAL(closeSignal()),
             this, SLOT(returnToDialog()));
-    ptrTransactions = new transactionsDialog;
+
     connect(ptrTransactions, SIGNAL(closeSignal()),
             this, SLOT(returnToDialog()));
-    ptrTransfer = new transferDialog;
+
     connect(ptrTransfer, SIGNAL(closeSignal()),
-            this, SLOT(returnToDialog()));
+            this, SLOT(returnToDialog()));*/
 }
 
 MainDialog::~MainDialog()
 {
     delete ui;
+    ui = nullptr;
     delete ptrWithdraw;
     ptrWithdraw = nullptr;
     delete ptrBalance;
@@ -33,38 +43,33 @@ MainDialog::~MainDialog()
     ptrTransfer = nullptr;
 }
 
-void MainDialog::returnToDialog()
-{
-    this->show();
-}
-
-
 void MainDialog::on_withdrawButton_clicked()
-{
-    ptrWithdraw->setWindowTitle("BankSimul");
+{    
     this->hide();
-    ptrWithdraw->show();
+    ptrWithdraw->exec();
+    this->show();
+    qDebug() << "Testi";
 }
 
 void MainDialog::on_balanceButton_clicked()
 {
-    ptrBalance->setWindowTitle("BankSimul");
     this->hide();
-    ptrBalance->show();
+    ptrBalance->exec();
+    this->show();
 }
 
 void MainDialog::on_transactionButton_clicked()
 {
-    ptrTransactions->setWindowTitle("BankSimul");
     this->hide();
-    ptrTransactions->show();    
+    ptrTransactions->exec();
+    this->show();
 }
 
 void MainDialog::on_transferButton_clicked()
 {
-    ptrTransfer->setWindowTitle("BankSimul");
     this->hide();
-    ptrTransfer->show();
+    ptrTransfer->exec();
+    this->show();
 }
 
 void MainDialog::on_logoutButton_clicked()
@@ -85,7 +90,11 @@ void MainDialog::on_logoutButton_clicked()
         message.exec();
     });
     */
+    //status = 0;
 
     this->close();
+
+    //ptrMainWindow->show();
+    //emit sendSignal();
 }
 

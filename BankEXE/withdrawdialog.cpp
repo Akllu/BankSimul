@@ -6,17 +6,16 @@ WithdrawDialog::WithdrawDialog(QWidget *parent) :
     ui(new Ui::WithdrawDialog)
 {
     ui->setupUi(this);
-    ptrOtherWithdraw = new otherWithdrawDialog;
-    connect(ptrOtherWithdraw, SIGNAL(closeSignal()),
-            this, SLOT(returnToDialog()));
+
+    //connect(ptrOtherWithdraw, SIGNAL(closeSignal()),
+            //this, SLOT(returnToDialog()));
     otherAmount = 0;
 }
 
 WithdrawDialog::~WithdrawDialog()
 {
     delete ui;
-    delete ptrOtherWithdraw;
-    ptrOtherWithdraw = nullptr;
+    ui = nullptr;
 }
 
 void WithdrawDialog::returnToDialog()
@@ -56,15 +55,20 @@ void WithdrawDialog::on_button500_clicked()
 
 void WithdrawDialog::on_buttonOther_clicked()
 {
+    ptrOtherWithdraw = new otherWithdrawDialog;
     ptrOtherWithdraw->setWindowTitle("BankSimul");
-    this->close();
+    this->hide();
     ptrOtherWithdraw->show();
+    ptrOtherWithdraw->exec();
+    this->show();
     otherAmount = ptrOtherWithdraw->returnAmount();
     //Vähennetään käyttäjältä otherAmount
+    delete ptrOtherWithdraw;
+    ptrOtherWithdraw = nullptr;
 }
 
 void WithdrawDialog::on_buttonClose_clicked()
 {
+    //emit closeSignal();
     this->close();
-    emit closeSignal();
 }

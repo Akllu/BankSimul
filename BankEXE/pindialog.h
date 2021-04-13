@@ -4,7 +4,9 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QIntValidator>
-#include "maindialog.h"
+#include <QTimer>
+#include <QKeyEvent>
+#include <QDebug>
 
 namespace Ui {
 class PINDialog;
@@ -23,7 +25,6 @@ private slots:
 
 private:
     Ui::PINDialog *ui;
-    MainDialog *ptrMainDialog;
     short number;
     short attempts;
 };

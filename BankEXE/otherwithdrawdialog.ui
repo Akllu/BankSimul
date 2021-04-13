@@ -94,7 +94,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string>Takaisin</string>
+      <string>Peruuta</string>
      </property>
     </widget>
    </item>

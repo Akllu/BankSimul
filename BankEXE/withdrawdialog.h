@@ -36,8 +36,6 @@ private:
     Ui::WithdrawDialog *ui;
     otherWithdrawDialog *ptrOtherWithdraw;
     double otherAmount;
-
-
 };
 
 #endif // WITHDRAWDIALOG_H

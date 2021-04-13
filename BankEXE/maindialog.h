@@ -4,10 +4,14 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QTimer>
+#include <QDebug>
+
 #include "withdrawdialog.h"
 #include "balancedialog.h"
 #include "transactionsdialog.h"
 #include "transferdialog.h"
+
+//class MainWindow;
 
 namespace Ui {
 class MainDialog;
@@ -18,11 +22,11 @@ class MainDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit MainDialog(QWidget *parent = nullptr);
+    explicit MainDialog(QWidget *parent = nullptr);//, MainWindow *ptr = nullptr);
     ~MainDialog();
 
-public slots:
-    void returnToDialog();
+signals:
+    void sendSignal();
 
 private slots:
     void on_withdrawButton_clicked();
@@ -37,6 +41,9 @@ private:
     balanceDialog *ptrBalance;
     transactionsDialog *ptrTransactions;
     transferDialog *ptrTransfer;
+    //MainWindow *ptrMainWindow
+
+    int status;
 };
 
 #endif // MAINDIALOG_H

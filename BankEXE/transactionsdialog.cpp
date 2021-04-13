@@ -11,6 +11,7 @@ transactionsDialog::transactionsDialog(QWidget *parent) :
 transactionsDialog::~transactionsDialog()
 {
     delete ui;
+    ui = nullptr;
 }
 
 void transactionsDialog::on_nextButton_clicked()

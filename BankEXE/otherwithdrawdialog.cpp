@@ -13,6 +13,7 @@ otherWithdrawDialog::otherWithdrawDialog(QWidget *parent) :
 otherWithdrawDialog::~otherWithdrawDialog()
 {
     delete ui;
+    ui = nullptr;
 }
 
 void otherWithdrawDialog::on_withdrawButton_clicked()
