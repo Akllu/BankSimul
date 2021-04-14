@@ -54,21 +54,21 @@ MainDialog::~MainDialog()
 
 void MainDialog::on_withdrawButton_clicked()
 {
-    this->close();
+    this->hide();
     emit timerSignal();
     ptrWithdraw->show();
 }
 
 void MainDialog::on_balanceButton_clicked()
 {
-    this->close();
+    this->hide();
     emit timerSignal();
     ptrBalance->show();
 }
 
 void MainDialog::on_transactionButton_clicked()
 {
-    this->close();
+    this->hide();
     emit timerSignal();
     ptrTransactions->show();
 }
