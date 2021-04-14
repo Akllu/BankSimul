@@ -24,6 +24,18 @@ MainDialog::MainDialog(QWidget *parent):
 
     connect(ptrTransfer, SIGNAL(closeSignal()),
             this, SLOT(show()));
+
+    connect(this, SIGNAL(timerSignal()),
+            ptrWithdraw, SLOT(resetTimer()));
+
+    connect(this, SIGNAL(timerSignal()),
+            ptrBalance, SLOT(resetTimer()));
+
+    connect(this, SIGNAL(timerSignal()),
+            ptrTransactions, SLOT(resetTimer()));
+
+    connect(this, SIGNAL(timerSignal()),
+            ptrTransfer, SLOT(resetTimer()));
 }
 
 MainDialog::~MainDialog()
@@ -42,25 +54,29 @@ MainDialog::~MainDialog()
 
 void MainDialog::on_withdrawButton_clicked()
 {
-    this->hide();
+    this->close();
+    emit timerSignal();
     ptrWithdraw->show();
 }
 
 void MainDialog::on_balanceButton_clicked()
 {
-    this->hide();
+    this->close();
+    emit timerSignal();
     ptrBalance->show();
 }
 
 void MainDialog::on_transactionButton_clicked()
 {
-    this->hide();
+    this->close();
+    emit timerSignal();
     ptrTransactions->show();
 }
 
 void MainDialog::on_transferButton_clicked()
 {
     this->hide();
+    emit timerSignal();
     ptrTransfer->show();
 }
 

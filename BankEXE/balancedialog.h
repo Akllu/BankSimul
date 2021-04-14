@@ -2,6 +2,7 @@
 #define BALANCEDIALOG_H
 
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class balanceDialog;
@@ -15,6 +16,9 @@ public:
     explicit balanceDialog(QWidget *parent = nullptr);
     ~balanceDialog();
 
+public slots:
+    void resetTimer();
+
 signals:
     void closeSignal();
 
@@ -23,6 +27,7 @@ private slots:
 
 private:
     Ui::balanceDialog *ui;
+    QTimer *dialogTimer;
 };
 
 #endif // BALANCEDIALOG_H

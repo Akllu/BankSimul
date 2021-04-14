@@ -6,7 +6,6 @@ Aleksi Kalliokoski TVT20SPL
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QDebug>
 
 #include "maindialog.h"
 

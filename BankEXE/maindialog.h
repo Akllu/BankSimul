@@ -25,6 +25,7 @@ public:
 
 signals:
     void logoutSignal();
+    void timerSignal();
 
 private slots:
     void on_withdrawButton_clicked();

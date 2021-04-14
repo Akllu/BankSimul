@@ -2,6 +2,7 @@
 #define TRANSACTIONSDIALOG_H
 
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class transactionsDialog;
@@ -15,6 +16,9 @@ public:
     explicit transactionsDialog(QWidget *parent = nullptr);
     ~transactionsDialog();
 
+public slots:
+    void resetTimer();
+
 signals:
     void closeSignal();
 
@@ -25,6 +29,7 @@ private slots:
 
 private:
     Ui::transactionsDialog *ui;
+    QTimer *dialogTimer;
 };
 
 #endif // TRANSACTIONSDIALOG_H

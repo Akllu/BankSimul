@@ -2,6 +2,7 @@
 #define WITHDRAWDIALOG_H
 
 #include <QDialog>
+#include <QTimer>
 
 #include "otherwithdrawdialog.h"
 
@@ -16,6 +17,9 @@ class WithdrawDialog : public QDialog
 public:
     explicit WithdrawDialog(QWidget *parent = nullptr);
     ~WithdrawDialog();
+
+public slots:
+    void resetTimer();
 
 signals:
     void closeSignal();
@@ -34,6 +38,7 @@ private:
     Ui::WithdrawDialog *ui;
     otherWithdrawDialog *ptrOtherWithdraw;
     double otherAmount;
+    QTimer *dialogTimer;
 };
 
 #endif // WITHDRAWDIALOG_H

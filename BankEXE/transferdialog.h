@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QTimer>
 
 namespace Ui {
 class transferDialog;
@@ -16,6 +17,9 @@ public:
     explicit transferDialog(QWidget *parent = nullptr);
     ~transferDialog();
 
+public slots:
+    void resetTimer();
+
 signals:
     void closeSignal();
 
@@ -27,6 +31,7 @@ private:
     Ui::transferDialog *ui;
     double transferAmount;
     QString transferAccount;
+    QTimer *dialogTimer;
 };
 
 #endif // TRANSFERDIALOG_H

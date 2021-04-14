@@ -10,6 +10,11 @@ WithdrawDialog::WithdrawDialog(QWidget *parent) :
     ptrOtherWithdraw = new otherWithdrawDialog;
     otherAmount = 0;
 
+    dialogTimer = new QTimer(this);
+    dialogTimer->setInterval(10000);
+    dialogTimer->setSingleShot(true);
+    connect(dialogTimer, SIGNAL(timeout()), this, SLOT(on_buttonClose_clicked()));
+
     connect(ptrOtherWithdraw, SIGNAL(closeSignal()),
             this, SLOT(show()));
 }
@@ -20,6 +25,14 @@ WithdrawDialog::~WithdrawDialog()
     ui = nullptr;
     delete ptrOtherWithdraw;
     ptrOtherWithdraw = nullptr;
+    delete dialogTimer;
+    dialogTimer = nullptr;
+}
+
+void WithdrawDialog::resetTimer()
+{
+    dialogTimer->stop();
+    dialogTimer->start();
 }
 
 void WithdrawDialog::on_button20_clicked()
@@ -62,6 +75,7 @@ void WithdrawDialog::on_buttonOther_clicked()
 
 void WithdrawDialog::on_buttonClose_clicked()
 {
+    dialogTimer->stop();
     this->close();
     emit closeSignal();
 }
