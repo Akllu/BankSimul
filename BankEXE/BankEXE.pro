@@ -9,32 +9,21 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    balancedialog.cpp \
+    homewindow.cpp \
     main.cpp \
-    maindialog.cpp \
-    mainwindow.cpp \
-    otherwithdrawdialog.cpp \
-    transactionsdialog.cpp \
-    transferdialog.cpp \
-    withdrawdialog.cpp
+    mainmenu.cpp \
+    otherwithdrawdialog.cpp
 
 HEADERS += \
-    balancedialog.h \
-    maindialog.h \
-    mainwindow.h \
+    homewindow.h \
+    mainmenu.h \
     otherwithdrawdialog.h \
-    transactionsdialog.h \
-    transferdialog.h \
-    withdrawdialog.h
+    mainwindow.h.h
 
 FORMS += \
-    balancedialog.ui \
-    maindialog.ui \
-    mainwindow.ui \
-    otherwithdrawdialog.ui \
-    transactionsdialog.ui \
-    transferdialog.ui \
-    withdrawdialog.ui
+    homewindow.ui \
+    mainmenu.ui \
+    otherwithdrawdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
