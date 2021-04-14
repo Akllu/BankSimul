@@ -97,9 +97,9 @@ private slots:
 private:
     Ui::MainMenu *ui;
     double otherAmount; //Käyttäjän syöttämä Muu summa
-    QString clickedNum;
-    QString trfAccNum;
-    QString trfAmount;
+    QString clickedNum; //Näppäimistöstä painettu näppäin
+    QString trfAccNum;  //Saajan tilinumero
+    QString trfAmount;  //Saajalle menevä summa
 };
 
 #endif // MAINMENU_H

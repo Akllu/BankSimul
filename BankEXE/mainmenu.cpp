@@ -15,13 +15,13 @@ MainMenu::~MainMenu()
     ui = nullptr;
 }
 
-void MainMenu::insertAccNum(QString i)
+void MainMenu::insertAccNum(QString i)  //Lisätään painetut numerot tilinumeroon
 {
     trfAccNum.append(i);
     ui->accNumLineEdit->setText(trfAccNum);
 }
 
-void MainMenu::insertAmountNum(QString i)
+void MainMenu::insertAmountNum(QString i)   //Lisätään painetut numerot siirrettävään summaan
 {
     trfAmount.append(i);
     ui->amountInsertLineEdit->setText(trfAmount);
