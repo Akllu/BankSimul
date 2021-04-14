@@ -11,19 +11,16 @@ CONFIG += c++11
 SOURCES += \
     homewindow.cpp \
     main.cpp \
-    mainmenu.cpp \
-    otherwithdrawdialog.cpp
+    mainmenu.cpp
 
 HEADERS += \
     homewindow.h \
     mainmenu.h \
-    otherwithdrawdialog.h \
     mainwindow.h.h
 
 FORMS += \
     homewindow.ui \
-    mainmenu.ui \
-    otherwithdrawdialog.ui
+    mainmenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

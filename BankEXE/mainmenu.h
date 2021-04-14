@@ -36,6 +36,41 @@ private slots:
     void on_wtdrButton500_clicked();
     void on_wtdrButtonOther_clicked();
 
+    void on_blcCloseButton_clicked();   //Näytä saldo
+
+    void on_trcNextButton_clicked();    //Tilitapahtumat
+    void on_trcPreviousButton_clicked();
+    void on_trcCloseButton_clicked();
+
+    void on_trfNextButton_clicked();    //Tilisiirto
+    void on_trfCloseButton_clicked();
+
+    void on_otherButton0_clicked();
+
+    void on_otherButton1_clicked();
+
+    void on_otherButton2_clicked();
+
+    void on_otherButton3_clicked();
+
+    void on_otherButton4_clicked();
+
+    void on_otherButton5_clicked();
+
+    void on_otherButton6_clicked();
+
+    void on_otherButton7_clicked();
+
+    void on_otherButton8_clicked();
+
+    void on_otherButton9_clicked();
+
+    void on_otherClearButton_clicked();
+
+    void on_otherNextButton_clicked();
+
+    void on_otherCancelButton_clicked();
+
 private:
     Ui::MainMenu *ui;
 };

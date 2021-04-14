@@ -84,10 +84,117 @@ void MainMenu::on_wtdrButton500_clicked()
 
 void MainMenu::on_wtdrButtonOther_clicked()
 {
-
+    ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainMenu::on_wtdrButtonClose_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+/***************NÄYTÄ SALDO***************/
+
+void MainMenu::on_blcCloseButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+/***************TILITAPAHTUMAT***************/
+
+void MainMenu::on_trcNextButton_clicked()
+{
+    //10 tilitapahtumaa eteenpäin
+}
+
+void MainMenu::on_trcPreviousButton_clicked()
+{
+    //10 tilitapahtumaa taaksepäin
+}
+
+void MainMenu::on_trcCloseButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+/***************TILISIIRTO***************/
+
+void MainMenu::on_trfNextButton_clicked()
+{
+
+}
+
+void MainMenu::on_trfCloseButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+/***************TILISIIRTO***************/
+
+void MainMenu::on_otherButton0_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton1_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton2_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton3_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton4_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton5_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton6_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton7_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton8_clicked()
+{
+
+}
+
+void MainMenu::on_otherButton9_clicked()
+{
+
+}
+
+void MainMenu::on_otherClearButton_clicked()
+{
+
+}
+
+void MainMenu::on_otherNextButton_clicked()
+{
+
+}
+
+void MainMenu::on_otherCancelButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
 }

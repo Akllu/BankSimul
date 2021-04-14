@@ -13,7 +13,7 @@ HomeWindow::HomeWindow(QWidget *parent)
     ui->pictureLabel->setPixmap(pic.scaled(500,500,Qt::KeepAspectRatio));   //Skaalataan kuva
     setWindowTitle("BankSimul");
 
-    connect(ptrMainMenu, SIGNAL(logoutSignal()),
+    connect(ptrMainMenu, SIGNAL(logoutSignal()),    //Yhdistetään Kirjaudu ulos-painike aloituskäyttölittyymään palaamiseen
             this, SLOT(backToHome()));
 }
 
@@ -27,10 +27,10 @@ HomeWindow::~HomeWindow()
 
 void HomeWindow::on_pushButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(1);  //Näytetään pääkäyttöliittymä
 }
 
 void HomeWindow::backToHome()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(0);  //Näytetään aloituskäyttöliittymä
 }
