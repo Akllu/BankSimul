@@ -15,6 +15,18 @@ MainMenu::~MainMenu()
     ui = nullptr;
 }
 
+void MainMenu::insertAccNum(QString i)
+{
+    trfAccNum.append(i);
+    ui->accNumLineEdit->setText(trfAccNum);
+}
+
+void MainMenu::insertAmountNum(QString i)
+{
+    trfAmount.append(i);
+    ui->amountInsertLineEdit->setText(trfAmount);
+}
+
 
 /***************PÄÄVALIKKO***************/
 
@@ -85,6 +97,7 @@ void MainMenu::on_wtdrButton500_clicked()
 void MainMenu::on_wtdrButtonOther_clicked()
 {
     ui->stackedWidget->setCurrentIndex(7);
+    otherAmount = ui->otherAmountLineEdit->text().toDouble();   //Otetaan käyttäjän syöttämä rahasumma talteen
 }
 
 void MainMenu::on_wtdrButtonClose_clicked()
@@ -123,11 +136,24 @@ void MainMenu::on_trcCloseButton_clicked()
 
 void MainMenu::on_trfNextButton_clicked()
 {
-
+    QMessageBox confirmation;
+    confirmation.setText(tr("Haluatko varmasti siirtää valitun summan?"));
+    QAbstractButton *pButtonYes = confirmation.addButton(tr("Kyllä"), QMessageBox::YesRole);
+    confirmation.addButton(tr("Peruuta"), QMessageBox::NoRole);
+    confirmation.exec();
+    if(confirmation.clickedButton() == pButtonYes)
+    {
+        //Tarkista rahat
+        //Siirrä rahat
+        on_accNumClearButton_clicked();
+        ui->stackedWidget->setCurrentIndex(0);
+    }
 }
 
 void MainMenu::on_trfCloseButton_clicked()
 {
+    on_accNumClearButton_clicked();
+    on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -214,68 +240,81 @@ void MainMenu::on_otherCancelButton_clicked()
 
 void MainMenu::on_accNumButton0_clicked()
 {
-
+    clickedNum = "0";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton1_clicked()
 {
-
+    clickedNum = "1";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton2_clicked()
 {
-
+    clickedNum = "2";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton3_clicked()
 {
-
+    clickedNum = "3";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton4_clicked()
 {
-
+    clickedNum = "4";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton5_clicked()
 {
-
+    clickedNum = "5";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton6_clicked()
 {
-
+    clickedNum = "6";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton7_clicked()
 {
-
+    clickedNum = "7";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton8_clicked()
 {
-
+    clickedNum = "8";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumButton9_clicked()
 {
-
+    clickedNum = "9";
+    insertAccNum(clickedNum);
 }
 
 void MainMenu::on_accNumClearButton_clicked()
 {
-
+    ui->trfAccNumLineEdit->clear();
+    ui->accNumLineEdit->clear();
+    trfAccNum = "";
 }
 
 void MainMenu::on_accNumNextButton_clicked()
 {
-
+    ui->trfAccNumLineEdit->setText(trfAccNum);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainMenu::on_accNumCancelButton_clicked()
 {
+    on_accNumClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(4);
-    //Clear?
 }
 
 
@@ -283,66 +322,79 @@ void MainMenu::on_accNumCancelButton_clicked()
 
 void MainMenu::on_amountInsertButton0_clicked()
 {
-
+    clickedNum = "0";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton1_clicked()
 {
-
+    clickedNum = "1";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton2_clicked()
 {
-
+    clickedNum = "2";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton3_clicked()
 {
-
+    clickedNum = "3";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton4_clicked()
 {
-
+    clickedNum = "4";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton5_clicked()
 {
-
+    clickedNum = "5";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton6_clicked()
 {
-
+    clickedNum = "6";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton7_clicked()
 {
-
+    clickedNum = "7";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton8_clicked()
 {
-
+    clickedNum = "8";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertButton9_clicked()
 {
-
+    clickedNum = "9";
+    insertAmountNum(clickedNum);
 }
 
 void MainMenu::on_amountInsertClearButton_clicked()
 {
-
+    ui->amountInsertLineEdit->clear();
+    ui->trfAmountLineEdit->clear();
+    trfAmount = "";
 }
 
 void MainMenu::on_amountInsertNextButton_clicked()
 {
-
+    ui->trfAmountLineEdit->setText(trfAmount);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainMenu::on_amountInsertCancelButton_clicked()
 {
+    on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(4);
-    //Clear??
 }

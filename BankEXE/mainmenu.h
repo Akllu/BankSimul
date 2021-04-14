@@ -4,6 +4,9 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QTimer>
+#include <QIntValidator>
+#include <cmath>
+#include <QDebug>
 
 namespace Ui {
 class MainMenu;
@@ -16,6 +19,8 @@ class MainMenu : public QDialog
 public:
     explicit MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
+    void insertAccNum(QString i);
+    void insertAmountNum(QString i);
 
 signals:
     void logoutSignal();
@@ -91,6 +96,10 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
+    double otherAmount; //Käyttäjän syöttämä Muu summa
+    QString clickedNum;
+    QString trfAccNum;
+    QString trfAmount;
 };
 
 #endif // MAINMENU_H

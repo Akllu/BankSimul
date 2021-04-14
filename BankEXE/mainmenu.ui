@@ -2677,10 +2677,10 @@ color: rgb(255, 255, 255);</string>
           <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="maxLength">
-          <number>4</number>
+          <number>10</number>
          </property>
          <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
+          <enum>QLineEdit::Normal</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -3210,10 +3210,10 @@ color: rgb(255, 255, 255);</string>
           <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="maxLength">
-          <number>4</number>
+          <number>10</number>
          </property>
          <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
+          <enum>QLineEdit::Normal</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
