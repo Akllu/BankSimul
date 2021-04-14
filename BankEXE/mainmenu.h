@@ -44,32 +44,50 @@ private slots:
 
     void on_trfNextButton_clicked();    //Tilisiirto
     void on_trfCloseButton_clicked();
+    void on_trfAddAccNumButton_clicked();
+    void on_trfAddAmountButton_clicked();
 
-    void on_otherButton0_clicked();
-
+    void on_otherButton0_clicked();     //Muu summa
     void on_otherButton1_clicked();
-
     void on_otherButton2_clicked();
-
     void on_otherButton3_clicked();
-
     void on_otherButton4_clicked();
-
     void on_otherButton5_clicked();
-
     void on_otherButton6_clicked();
-
     void on_otherButton7_clicked();
-
     void on_otherButton8_clicked();
-
     void on_otherButton9_clicked();
-
     void on_otherClearButton_clicked();
-
     void on_otherNextButton_clicked();
-
     void on_otherCancelButton_clicked();
+
+    void on_accNumButton0_clicked();    //Tilinumeron syöttö
+    void on_accNumButton1_clicked();
+    void on_accNumButton2_clicked();
+    void on_accNumButton3_clicked();
+    void on_accNumButton4_clicked();
+    void on_accNumButton5_clicked();
+    void on_accNumButton6_clicked();
+    void on_accNumButton7_clicked();
+    void on_accNumButton8_clicked();
+    void on_accNumButton9_clicked();
+    void on_accNumClearButton_clicked();
+    void on_accNumNextButton_clicked();
+    void on_accNumCancelButton_clicked();
+
+    void on_amountInsertButton0_clicked();  //Siirrettävän summan syöttö
+    void on_amountInsertButton1_clicked();
+    void on_amountInsertButton2_clicked();
+    void on_amountInsertButton3_clicked();
+    void on_amountInsertButton4_clicked();
+    void on_amountInsertButton5_clicked();
+    void on_amountInsertButton6_clicked();
+    void on_amountInsertButton7_clicked();
+    void on_amountInsertButton8_clicked();
+    void on_amountInsertButton9_clicked();
+    void on_amountInsertClearButton_clicked();
+    void on_amountInsertNextButton_clicked();
+    void on_amountInsertCancelButton_clicked();
 
 private:
     Ui::MainMenu *ui;

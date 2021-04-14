@@ -16,7 +16,7 @@ MainMenu::~MainMenu()
 }
 
 
-/***************PÄÄVALIKON PAINIKKEET***************/
+/***************PÄÄVALIKKO***************/
 
 void MainMenu::on_mainWithdrawButton_clicked()
 {
@@ -84,7 +84,7 @@ void MainMenu::on_wtdrButton500_clicked()
 
 void MainMenu::on_wtdrButtonOther_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget->setCurrentIndex(7);
 }
 
 void MainMenu::on_wtdrButtonClose_clicked()
@@ -131,8 +131,18 @@ void MainMenu::on_trfCloseButton_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void MainMenu::on_trfAddAccNumButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
 
-/***************TILISIIRTO***************/
+void MainMenu::on_trfAddAmountButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+}
+
+
+/***************MUU SUMMA***************/
 
 void MainMenu::on_otherButton0_clicked()
 {
@@ -197,4 +207,142 @@ void MainMenu::on_otherNextButton_clicked()
 void MainMenu::on_otherCancelButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+/***************TILINUMERON SYÖTTÖ***************/
+
+void MainMenu::on_accNumButton0_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton1_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton2_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton3_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton4_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton5_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton6_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton7_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton8_clicked()
+{
+
+}
+
+void MainMenu::on_accNumButton9_clicked()
+{
+
+}
+
+void MainMenu::on_accNumClearButton_clicked()
+{
+
+}
+
+void MainMenu::on_accNumNextButton_clicked()
+{
+
+}
+
+void MainMenu::on_accNumCancelButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    //Clear?
+}
+
+
+/***************SIIRRETTÄVÄN SUMMAN SYÖTTÖ***************/
+
+void MainMenu::on_amountInsertButton0_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton1_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton2_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton3_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton4_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton5_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton6_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton7_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton8_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertButton9_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertClearButton_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertNextButton_clicked()
+{
+
+}
+
+void MainMenu::on_amountInsertCancelButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+    //Clear??
 }
