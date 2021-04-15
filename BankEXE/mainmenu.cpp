@@ -218,11 +218,13 @@ void MainMenu::on_blcCloseButton_clicked()
 void MainMenu::on_trcNextButton_clicked()
 {
     //10 tilitapahtumaa eteenpäin
+    resetTimer();
 }
 
 void MainMenu::on_trcPreviousButton_clicked()
 {
     //10 tilitapahtumaa taaksepäin
+    resetTimer();
 }
 
 void MainMenu::on_trcCloseButton_clicked()
