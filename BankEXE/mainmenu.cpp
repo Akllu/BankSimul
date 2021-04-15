@@ -47,6 +47,8 @@ void MainMenu::on_mainTransactionButton_clicked()
 
 void MainMenu::on_mainTransferButton_clicked()
 {
+    on_accNumClearButton_clicked();
+    on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(4);
 }
 
@@ -145,15 +147,14 @@ void MainMenu::on_trfNextButton_clicked()
     {
         //Tarkista rahat
         //Siirrä rahat
-        on_accNumClearButton_clicked();
+        //trfAccNum  Tilinumero
+        //trfAmount  Siirrettävä rahasumma
         ui->stackedWidget->setCurrentIndex(0);
     }
 }
 
 void MainMenu::on_trfCloseButton_clicked()
 {
-    on_accNumClearButton_clicked();
-    on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -389,6 +390,7 @@ void MainMenu::on_amountInsertClearButton_clicked()
 
 void MainMenu::on_amountInsertNextButton_clicked()
 {
+    trfAmount.toDouble();   //Muunnetaan siirrettävä summa double tyyppiseksi
     ui->trfAmountLineEdit->setText(trfAmount);
     ui->stackedWidget->setCurrentIndex(4);
 }
