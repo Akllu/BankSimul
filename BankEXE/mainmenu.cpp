@@ -84,18 +84,19 @@ void MainMenu::on_mainWithdrawButton_clicked()
 void MainMenu::on_mainBalanceButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    mainMenuTimer->start();
 }
 
 void MainMenu::on_mainTransactionButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+    mainMenuTimer->start();
 }
 
 void MainMenu::on_mainTransferButton_clicked()
 {
-    on_accNumClearButton_clicked();
-    on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(4);
+    mainMenuTimer->start();
 }
 
 void MainMenu::on_mainLogoutButton_clicked()
@@ -234,6 +235,8 @@ void MainMenu::on_trcCloseButton_clicked()
 
 void MainMenu::on_trfNextButton_clicked()
 {
+    mainMenuTimer->stop();
+    transferAmount = trfAmount.toDouble();
     QMessageBox confirmation;
     confirmation.setText(tr("Haluatko varmasti siirtää valitun summan?"));
     QAbstractButton *pButtonYes = confirmation.addButton(tr("Kyllä"), QMessageBox::YesRole);
@@ -241,27 +244,42 @@ void MainMenu::on_trfNextButton_clicked()
     confirmation.exec();
     if(confirmation.clickedButton() == pButtonYes)
     {
-        //Tarkista rahat
-        //Siirrä rahat
-        //trfAccNum  Tilinumero
-        //trfAmount  Siirrettävä rahasumma
-        ui->stackedWidget->setCurrentIndex(0);
+        if(balance < transferAmount)    //Tarkistetaan onko käyttäjällä rahaa siirtoon
+        {
+            withdrawFailed();
+        }
+        else
+        {
+            //Siirrä rahat ja vähennä summa lähettäjältä
+            //HUOM! trfAccNum = Tilinumero johon rahat siirretään JA transferAmount = Siirrettävä summa
+            QMessageBox::information(this, "Onnistunut siirto", "Tilisiirto onnistui!");
+            on_trfCloseButton_clicked();
+        }
+    }
+    else
+    {
+        mainMenuTimer->start();
     }
 }
 
 void MainMenu::on_trfCloseButton_clicked()
 {
+    mainMenuTimer->stop();
+    on_accNumClearButton_clicked();
+    on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainMenu::on_trfAddAccNumButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(5);
+    resetTimer();
 }
 
 void MainMenu::on_trfAddAmountButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
+    resetTimer();
 }
 
 
@@ -384,60 +402,70 @@ void MainMenu::on_accNumButton0_clicked()
 {
     clickedNum = "0";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton1_clicked()
 {
     clickedNum = "1";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton2_clicked()
 {
     clickedNum = "2";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton3_clicked()
 {
     clickedNum = "3";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton4_clicked()
 {
     clickedNum = "4";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton5_clicked()
 {
     clickedNum = "5";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton6_clicked()
 {
     clickedNum = "6";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton7_clicked()
 {
     clickedNum = "7";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton8_clicked()
 {
     clickedNum = "8";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumButton9_clicked()
 {
     clickedNum = "9";
     insertAccNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_accNumClearButton_clicked()
@@ -445,18 +473,21 @@ void MainMenu::on_accNumClearButton_clicked()
     ui->trfAccNumLineEdit->clear();
     ui->accNumLineEdit->clear();
     trfAccNum = "";
+    resetTimer();
 }
 
 void MainMenu::on_accNumNextButton_clicked()
 {
     ui->trfAccNumLineEdit->setText(trfAccNum);
     ui->stackedWidget->setCurrentIndex(4);
+    resetTimer();
 }
 
 void MainMenu::on_accNumCancelButton_clicked()
 {
     on_accNumClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(4);
+    resetTimer();
 }
 
 
@@ -466,60 +497,70 @@ void MainMenu::on_amountInsertButton0_clicked()
 {
     clickedNum = "0";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton1_clicked()
 {
     clickedNum = "1";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton2_clicked()
 {
     clickedNum = "2";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton3_clicked()
 {
     clickedNum = "3";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton4_clicked()
 {
     clickedNum = "4";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton5_clicked()
 {
     clickedNum = "5";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton6_clicked()
 {
     clickedNum = "6";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton7_clicked()
 {
     clickedNum = "7";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton8_clicked()
 {
     clickedNum = "8";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertButton9_clicked()
 {
     clickedNum = "9";
     insertAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertClearButton_clicked()
@@ -527,17 +568,19 @@ void MainMenu::on_amountInsertClearButton_clicked()
     ui->amountInsertLineEdit->clear();
     ui->trfAmountLineEdit->clear();
     trfAmount = "";
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertNextButton_clicked()
 {
-    trfAmount.toDouble();   //Muunnetaan siirrettävä summa double tyyppiseksi
     ui->trfAmountLineEdit->setText(trfAmount);
     ui->stackedWidget->setCurrentIndex(4);
+    resetTimer();
 }
 
 void MainMenu::on_amountInsertCancelButton_clicked()
 {
     on_amountInsertClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(4);
+    resetTimer();
 }

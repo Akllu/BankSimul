@@ -106,11 +106,12 @@ private:
     QString clickedNum; //Näppäimistöstä painettu näppäin
     QString wtdrAmount; //Käyttäjän syöttämä Muu summa
     QString trfAccNum;  //Saajan tilinumero
-    QString trfAmount;  //Saajalle menevä summa
+    QString trfAmount;  //Käyttäjän syöttämä tilisiirron summa
     QTimer *mainMenuTimer;
 
     double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
-    double balance;
+    double transferAmount;  //Saajalle lähetettävä/Lähettäjältä vähennettävä summa
+    double balance = 300; //Tähän käyttäjän saldo
 
 };
 
