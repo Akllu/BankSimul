@@ -19,8 +19,13 @@ class MainMenu : public QDialog
 public:
     explicit MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
+    void insertOtherAmountNum(QString i);
     void insertAccNum(QString i);
     void insertAmountNum(QString i);
+    void resetTimer();
+
+public slots:
+    void backToMainMenu();
 
 signals:
     void logoutSignal();
@@ -96,10 +101,12 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
-    double otherAmount; //Käyttäjän syöttämä Muu summa
     QString clickedNum; //Näppäimistöstä painettu näppäin
+    QString wtdrAmount; //Käyttäjän syöttämä Muu summa
     QString trfAccNum;  //Saajan tilinumero
     QString trfAmount;  //Saajalle menevä summa
+    double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
+    QTimer *mainMenuTimer;
 };
 
 #endif // MAINMENU_H

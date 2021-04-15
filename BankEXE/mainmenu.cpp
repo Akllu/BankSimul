@@ -7,12 +7,23 @@ MainMenu::MainMenu(QWidget *parent):
 {
     ui->setupUi(this);
     this->setWindowTitle("BankSimul");
+    mainMenuTimer = new QTimer(this);
+    mainMenuTimer->setInterval(10000);
+    mainMenuTimer->setSingleShot(true);
+    connect(mainMenuTimer, SIGNAL(timeout()),
+            this, SLOT(backToMainMenu()));
 }
 
 MainMenu::~MainMenu()
 {
     delete ui;
     ui = nullptr;
+}
+
+void MainMenu::insertOtherAmountNum(QString i)
+{
+    wtdrAmount.append(i);
+    ui->otherAmountLineEdit->setText(wtdrAmount);
 }
 
 void MainMenu::insertAccNum(QString i)  //Lisätään painetut numerot tilinumeroon
@@ -27,12 +38,24 @@ void MainMenu::insertAmountNum(QString i)   //Lisätään painetut numerot siirr
     ui->amountInsertLineEdit->setText(trfAmount);
 }
 
+void MainMenu::resetTimer()
+{
+    mainMenuTimer->stop();
+    mainMenuTimer->start();
+}
+
+void MainMenu::backToMainMenu()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
 
 /***************PÄÄVALIKKO***************/
 
 void MainMenu::on_mainWithdrawButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    mainMenuTimer->start();
 }
 
 void MainMenu::on_mainBalanceButton_clicked()
@@ -98,12 +121,13 @@ void MainMenu::on_wtdrButton500_clicked()
 
 void MainMenu::on_wtdrButtonOther_clicked()
 {
+    mainMenuTimer->stop();
     ui->stackedWidget->setCurrentIndex(7);
-    otherAmount = ui->otherAmountLineEdit->text().toDouble();   //Otetaan käyttäjän syöttämä rahasumma talteen
 }
 
 void MainMenu::on_wtdrButtonClose_clicked()
 {
+    mainMenuTimer->stop();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -173,66 +197,94 @@ void MainMenu::on_trfAddAmountButton_clicked()
 
 void MainMenu::on_otherButton0_clicked()
 {
-
+    clickedNum = "0";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton1_clicked()
 {
-
+    clickedNum = "1";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton2_clicked()
 {
-
+    clickedNum = "2";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton3_clicked()
 {
-
+    clickedNum = "3";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton4_clicked()
 {
-
+    clickedNum = "4";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton5_clicked()
 {
-
+    clickedNum = "5";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton6_clicked()
 {
-
+    clickedNum = "6";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton7_clicked()
 {
-
+    clickedNum = "7";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton8_clicked()
 {
-
+    clickedNum = "8";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherButton9_clicked()
 {
-
+    clickedNum = "9";
+    insertOtherAmountNum(clickedNum);
 }
 
 void MainMenu::on_otherClearButton_clicked()
 {
-
+    ui->otherAmountLineEdit->clear();
+    wtdrAmount = "";
 }
 
 void MainMenu::on_otherNextButton_clicked()
 {
-
+    wtdrOtherAmount = ui->otherAmountLineEdit->text().toDouble();    //Otetaan käyttäjän syöttämä rahasumma talteen
+    if(std::fmod(wtdrOtherAmount, 10) != 0)
+    {
+        QMessageBox::warning(this, "Virheellinen rahasumma", "Huomioithan, että pienin nostettava seteli on 10€");
+        on_otherClearButton_clicked();
+        wtdrOtherAmount = 0;
+        qDebug() << wtdrOtherAmount;
+    }
+    else
+    {
+        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
+        qDebug() << wtdrOtherAmount;
+        on_otherClearButton_clicked();
+        wtdrOtherAmount = 0;
+        ui->stackedWidget->setCurrentIndex(0);
+        emit logoutSignal();
+    }
 }
 
 void MainMenu::on_otherCancelButton_clicked()
 {
+    on_otherClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(1);
 }
 
