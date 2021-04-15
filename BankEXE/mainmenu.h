@@ -23,6 +23,8 @@ public:
     void insertAccNum(QString i);
     void insertAmountNum(QString i);
     void resetTimer();
+    void withdrawSuccessful();
+    void withdrawFailed();
 
 public slots:
     void backToMainMenu();
@@ -105,8 +107,11 @@ private:
     QString wtdrAmount; //Käyttäjän syöttämä Muu summa
     QString trfAccNum;  //Saajan tilinumero
     QString trfAmount;  //Saajalle menevä summa
-    double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
     QTimer *mainMenuTimer;
+
+    double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
+    double balance;
+
 };
 
 #endif // MAINMENU_H

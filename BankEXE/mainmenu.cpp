@@ -7,10 +7,12 @@ MainMenu::MainMenu(QWidget *parent):
 {
     ui->setupUi(this);
     this->setWindowTitle("BankSimul");
-    mainMenuTimer = new QTimer(this);
+
+    mainMenuTimer = new QTimer(this);   //10s ajastin toiminnallisuuksille
     mainMenuTimer->setInterval(10000);
     mainMenuTimer->setSingleShot(true);
-    connect(mainMenuTimer, SIGNAL(timeout()),
+
+    connect(mainMenuTimer, SIGNAL(timeout()),   //Jos 10s ei tehdä mitään, palataan pääkäyttöliittymään
             this, SLOT(backToMainMenu()));
 }
 
@@ -44,9 +46,30 @@ void MainMenu::resetTimer()
     mainMenuTimer->start();
 }
 
+void MainMenu::withdrawSuccessful()
+{
+    QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
+    ui->stackedWidget->setCurrentIndex(0);
+    emit logoutSignal();
+}
+
+void MainMenu::withdrawFailed()
+{
+    QMessageBox::warning(this, "Virheellinen rahasumma", "Tilin saldo ei riitä!");
+    mainMenuTimer->start();
+}
+
 void MainMenu::backToMainMenu()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(0);  //Palataan pääkäyttöliittymään ja nollataan mahdollisesti syötetyt tiedot
+    ui->otherAmountLineEdit->clear();
+    ui->trfAccNumLineEdit->clear();
+    ui->trfAmountLineEdit->clear();
+    ui->accNumLineEdit->clear();
+    ui->amountInsertLineEdit->clear();
+    wtdrAmount = "";
+    trfAccNum = "";
+    trfAmount = "";
 }
 
 
@@ -85,44 +108,93 @@ void MainMenu::on_mainLogoutButton_clicked()
 
 void MainMenu::on_wtdrButton20_clicked()
 {
-    //Varmista saldo
-    //Vähennä käyttäjältä 20€
+    mainMenuTimer->stop();
+    if (balance < 20) //Tarkistetaan voidaanko syötetty summa nostaa
+    {
+        withdrawFailed();
+    }
+    else
+    {
+        //Vähennetään kirjautuneen tililtä 20€
+        withdrawSuccessful();
+    }
 }
 
 void MainMenu::on_wtdrButton40_clicked()
 {
-    //Varmista saldo
-    //Vähennä käyttäjältä 40€
+    mainMenuTimer->stop();
+    if (balance < 40)
+    {
+        withdrawFailed();
+    }
+    else
+    {
+        //Vähennetään kirjautuneen tililtä 40€
+        withdrawSuccessful();
+    }
 }
 
 void MainMenu::on_wtdrButton60_clicked()
 {
-    //Varmista saldo
-    //Vähennä käyttäjältä 60€
+    mainMenuTimer->stop();
+    if (balance < 60)
+    {
+        withdrawFailed();
+    }
+    else
+    {
+        //Vähennetään kirjautuneen tililtä 60€
+        withdrawSuccessful();
+    }
 }
 
 void MainMenu::on_wtdrButton100_clicked()
 {
-    //Varmista saldo
-    //Vähennä käyttäjältä 100€
+    mainMenuTimer->stop();
+    if (balance < 100)
+    {
+        withdrawFailed();
+    }
+    else
+    {
+        //Vähennetään kirjautuneen tililtä 100€
+        withdrawSuccessful();
+    }
 }
 
 void MainMenu::on_wtdrButton200_clicked()
 {
-    //Varmista saldo
-    //Vähennä käyttäjältä 200€
+    mainMenuTimer->stop();
+    if (balance < 200)
+    {
+        withdrawFailed();
+    }
+    else
+    {
+        //Vähennetään kirjautuneen tililtä 200€
+        withdrawSuccessful();
+    }
 }
 
 void MainMenu::on_wtdrButton500_clicked()
 {
-    //Varmista saldo
-    //Vähennä käyttäjältä 500€
+    mainMenuTimer->stop();
+    if (balance < 500)
+    {
+        withdrawFailed();
+    }
+    else
+    {
+        //Vähennetään kirjautuneen tililtä 500€
+        withdrawSuccessful();
+    }
 }
 
 void MainMenu::on_wtdrButtonOther_clicked()
 {
     mainMenuTimer->stop();
     ui->stackedWidget->setCurrentIndex(7);
+    mainMenuTimer->start();
 }
 
 void MainMenu::on_wtdrButtonClose_clicked()
@@ -199,66 +271,77 @@ void MainMenu::on_otherButton0_clicked()
 {
     clickedNum = "0";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton1_clicked()
 {
     clickedNum = "1";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton2_clicked()
 {
     clickedNum = "2";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton3_clicked()
 {
     clickedNum = "3";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton4_clicked()
 {
     clickedNum = "4";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton5_clicked()
 {
     clickedNum = "5";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton6_clicked()
 {
     clickedNum = "6";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton7_clicked()
 {
     clickedNum = "7";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton8_clicked()
 {
     clickedNum = "8";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherButton9_clicked()
 {
     clickedNum = "9";
     insertOtherAmountNum(clickedNum);
+    resetTimer();
 }
 
 void MainMenu::on_otherClearButton_clicked()
 {
     ui->otherAmountLineEdit->clear();
     wtdrAmount = "";
+    resetTimer();
 }
 
 void MainMenu::on_otherNextButton_clicked()
@@ -269,16 +352,21 @@ void MainMenu::on_otherNextButton_clicked()
         QMessageBox::warning(this, "Virheellinen rahasumma", "Huomioithan, että pienin nostettava seteli on 10€");
         on_otherClearButton_clicked();
         wtdrOtherAmount = 0;
-        qDebug() << wtdrOtherAmount;
     }
-    else
+
+    else if (balance < wtdrOtherAmount) //Tarkistetaan voidaanko syötetty summa nostaa
     {
-        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
-        qDebug() << wtdrOtherAmount;
+        withdrawFailed();
         on_otherClearButton_clicked();
         wtdrOtherAmount = 0;
-        ui->stackedWidget->setCurrentIndex(0);
-        emit logoutSignal();
+    }
+
+    else
+    {
+        //Vähennetään kirjautuneen tililtä annettu summa
+        withdrawSuccessful();
+        on_otherClearButton_clicked();
+        wtdrOtherAmount = 0;
     }
 }
 
@@ -286,6 +374,7 @@ void MainMenu::on_otherCancelButton_clicked()
 {
     on_otherClearButton_clicked();
     ui->stackedWidget->setCurrentIndex(1);
+    resetTimer();
 }
 
 
