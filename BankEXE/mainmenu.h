@@ -25,6 +25,7 @@ public:
     void resetTimer();
     void withdrawSuccessful();
     void withdrawFailed();
+    void startHomeWindowTimer();
 
 public slots:
     void backToMainMenu();
@@ -107,7 +108,8 @@ private:
     QString wtdrAmount; //Käyttäjän syöttämä Muu summa
     QString trfAccNum;  //Saajan tilinumero
     QString trfAmount;  //Käyttäjän syöttämä tilisiirron summa
-    QTimer *mainMenuTimer;
+    QTimer *mainMenuTimer;  //10s ajastimet
+    QTimer *homeWindowTimer;    //30s ajastin
 
     double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
     double transferAmount;  //Saajalle lähetettävä/Lähettäjältä vähennettävä summa

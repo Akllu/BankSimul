@@ -8,6 +8,7 @@ Aleksi Kalliokoski TVT20SPL
 #include <QMainWindow>
 
 #include "mainmenu.h"
+//#include "pininterface.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class HomeWindow; }
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::HomeWindow *ui;
     MainMenu *ptrMainMenu;
+    //PinInterface *ptrPIN;
 };
 
 #endif // HOMEWINDOW_H

@@ -12,8 +12,15 @@ MainMenu::MainMenu(QWidget *parent):
     mainMenuTimer->setInterval(10000);
     mainMenuTimer->setSingleShot(true);
 
+    homeWindowTimer = new QTimer(this); //30s ajastin pääkäyttöliittymälle
+    homeWindowTimer->setInterval(30000);
+    homeWindowTimer->setSingleShot(true);
+
     connect(mainMenuTimer, SIGNAL(timeout()),   //Jos 10s ei tehdä mitään, palataan pääkäyttöliittymään
             this, SLOT(backToMainMenu()));
+
+    connect(homeWindowTimer, SIGNAL(timeout()), //Jos 30s ei tehdä mitään, kirjaudutaan ulos
+            this, SLOT(on_mainLogoutButton_clicked()));
 }
 
 MainMenu::~MainMenu()
@@ -59,6 +66,11 @@ void MainMenu::withdrawFailed()
     mainMenuTimer->start();
 }
 
+void MainMenu::startHomeWindowTimer()
+{
+    homeWindowTimer->start();
+}
+
 void MainMenu::backToMainMenu()
 {
     ui->stackedWidget->setCurrentIndex(0);  //Palataan pääkäyttöliittymään ja nollataan mahdollisesti syötetyt tiedot
@@ -70,6 +82,7 @@ void MainMenu::backToMainMenu()
     wtdrAmount = "";
     trfAccNum = "";
     trfAmount = "";
+    homeWindowTimer->start();
 }
 
 
@@ -77,30 +90,35 @@ void MainMenu::backToMainMenu()
 
 void MainMenu::on_mainWithdrawButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    homeWindowTimer->stop();
     mainMenuTimer->start();
+    ui->stackedWidget->setCurrentIndex(1);    
 }
 
 void MainMenu::on_mainBalanceButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    homeWindowTimer->stop();
     mainMenuTimer->start();
+    ui->stackedWidget->setCurrentIndex(2);    
 }
 
 void MainMenu::on_mainTransactionButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    homeWindowTimer->stop();
     mainMenuTimer->start();
+    ui->stackedWidget->setCurrentIndex(3);    
 }
 
 void MainMenu::on_mainTransferButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
+    homeWindowTimer->stop();
     mainMenuTimer->start();
+    ui->stackedWidget->setCurrentIndex(4);    
 }
 
 void MainMenu::on_mainLogoutButton_clicked()
 {
+    homeWindowTimer->stop();
     emit logoutSignal();
 }
 
@@ -193,15 +211,15 @@ void MainMenu::on_wtdrButton500_clicked()
 
 void MainMenu::on_wtdrButtonOther_clicked()
 {
-    mainMenuTimer->stop();
+    resetTimer();
     ui->stackedWidget->setCurrentIndex(7);
-    mainMenuTimer->start();
 }
 
 void MainMenu::on_wtdrButtonClose_clicked()
 {
     mainMenuTimer->stop();
-    ui->stackedWidget->setCurrentIndex(0);
+    homeWindowTimer->start();
+    ui->stackedWidget->setCurrentIndex(0); 
 }
 
 
@@ -209,7 +227,9 @@ void MainMenu::on_wtdrButtonClose_clicked()
 
 void MainMenu::on_blcCloseButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    mainMenuTimer->stop();
+    homeWindowTimer->start();
+    ui->stackedWidget->setCurrentIndex(0); 
 }
 
 
@@ -229,6 +249,8 @@ void MainMenu::on_trcPreviousButton_clicked()
 
 void MainMenu::on_trcCloseButton_clicked()
 {
+    mainMenuTimer->stop();
+    homeWindowTimer->start();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -266,9 +288,10 @@ void MainMenu::on_trfNextButton_clicked()
 
 void MainMenu::on_trfCloseButton_clicked()
 {
-    mainMenuTimer->stop();
     on_accNumClearButton_clicked();
     on_amountInsertClearButton_clicked();
+    mainMenuTimer->stop();
+    homeWindowTimer->start();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
