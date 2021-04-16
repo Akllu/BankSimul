@@ -62,8 +62,17 @@ void MainMenu::withdrawSuccessful()
 
 void MainMenu::withdrawFailed()
 {
-    QMessageBox::warning(this, "Virheellinen rahasumma", "Tilin saldo ei riitä!");
+
+    QMessageBox *failMessage = new QMessageBox;
+    failMessage->setWindowTitle("Virheellinen rahasumma");
+    failMessage->setIcon(QMessageBox::Warning);
+    failMessage->setText("Tilin saldo ei riitä!");
+
+    failMessage->show();
+    QTimer::singleShot(10000, failMessage, SLOT(close()));
+    //QMessageBox::warning(this, "Virheellinen rahasumma", "Tilin saldo ei riitä!");
     mainMenuTimer->start();
+
 }
 
 void MainMenu::startHomeWindowTimer()

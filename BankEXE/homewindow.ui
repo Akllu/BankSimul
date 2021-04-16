@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>867</height>
+    <height>881</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@ color: rgb(255, 255, 255);</string>
           </property>
           <property name="font">
            <font>
-            <pointsize>28</pointsize>
+            <pointsize>36</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -51,7 +51,7 @@ color: rgb(255, 255, 255);</string>
            <enum>QFrame::Plain</enum>
           </property>
           <property name="text">
-           <string>PANKKIAUTOMAATTI</string>
+           <string>BankSimul</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

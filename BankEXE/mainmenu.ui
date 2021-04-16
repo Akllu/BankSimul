@@ -107,7 +107,7 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
-             <pointsize>24</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -753,7 +753,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="wtdrHeaderLabel2">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1030,7 +1030,7 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
-             <pointsize>24</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1509,7 +1509,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="wtdrHeaderLabel3">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1526,7 +1526,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="wtdrNameLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1544,7 +1544,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="wtdrAccountLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1594,7 +1594,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcHeaderLabel4">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1621,7 +1621,7 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1642,7 +1642,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcHeaderLabel2">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1659,7 +1659,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcTransactionsLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1677,7 +1677,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcHeaderLabel3">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1694,7 +1694,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcBalanceLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1712,7 +1712,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcAccountLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1730,7 +1730,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcNameLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1748,7 +1748,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="blcHeaderLabel">
            <property name="font">
             <font>
-             <pointsize>24</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1776,7 +1776,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcNameLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -1815,7 +1815,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcBalanceLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -1830,7 +1830,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcAccountLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -1845,7 +1845,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcHeaderLabel2">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1865,7 +1865,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcTransactionsLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -1880,7 +1880,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcHeaderLabel3">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1894,7 +1894,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcHeaderLabel5">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1932,7 +1932,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcHeaderLabel">
            <property name="font">
             <font>
-             <pointsize>24</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1952,7 +1952,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trcHeaderLabel4">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1998,7 +1998,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfHeaderLabel5">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -2012,7 +2012,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfHeaderLabel6">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -2026,7 +2026,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfHeaderLabel">
            <property name="font">
             <font>
-             <pointsize>24</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -2094,7 +2094,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfHeaderLabel4">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -2108,7 +2108,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfBalanceLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -2123,7 +2123,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfHeaderLabel3">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -2137,7 +2137,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfAccountNumLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -2152,7 +2152,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfHeaderLabel2">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -2169,7 +2169,7 @@ color: rgb(255, 255, 255);</string>
           <widget class="QLabel" name="trfNameLabel">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -2238,7 +2238,7 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -2262,7 +2262,7 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -2286,7 +2286,7 @@ color: rgb(255, 255, 255);</string>
         <widget class="QLabel" name="accNumHeaderLabel">
          <property name="font">
           <font>
-           <pointsize>24</pointsize>
+           <pointsize>26</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -2651,7 +2651,7 @@ color: rgb(255, 255, 255);</string>
         <widget class="QLabel" name="amountInsertHeaderLabel">
          <property name="font">
           <font>
-           <pointsize>24</pointsize>
+           <pointsize>26</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -3016,7 +3016,7 @@ color: rgb(255, 255, 255);</string>
         <widget class="QLabel" name="otherHeaderLabel">
          <property name="font">
           <font>
-           <pointsize>24</pointsize>
+           <pointsize>26</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
