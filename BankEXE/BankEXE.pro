@@ -28,13 +28,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
-
-win32: LIBS += -L$$PWD/../../SerialPortDLL/build-SerialPortDLL-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/ -lSerialPortDLL
-
-INCLUDEPATH += $$PWD/../../SerialPortDLL/SerialPortDLL
-DEPENDPATH += $$PWD/../../SerialPortDLL/SerialPortDLL
-
-win32: LIBS += -L$$PWD/../../PINCodeDLL/build-DLLPinCode-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/ -lDLLPinCode
-
-INCLUDEPATH += $$PWD/../../PINCodeDLL/DLLPinCode
-DEPENDPATH += $$PWD/../../PINCodeDLL/DLLPinCode
