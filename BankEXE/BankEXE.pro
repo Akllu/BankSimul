@@ -16,7 +16,6 @@ SOURCES += \
 HEADERS += \
     homewindow.h \
     mainmenu.h \
-    mainwindow.h.h
 
 FORMS += \
     homewindow.ui \
