@@ -8,6 +8,7 @@ Aleksi Kalliokoski TVT20SPL
 #include <QMainWindow>
 
 #include "mainmenu.h"
+//#include "serialportdll.h"
 //#include "pininterface.h"
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,13 @@ class HomeWindow : public QMainWindow
 public:
     HomeWindow(QWidget *parent = nullptr);
     ~HomeWindow();
+    //void getValueFromRFID();
+
+public slots:
+    //void dataFromRFID(QString);
+
+signals:
+    //void readRFID();
 
 private slots:
     void on_pushButton_clicked();
@@ -29,7 +37,10 @@ private slots:
 private:
     Ui::HomeWindow *ui;
     MainMenu *ptrMainMenu;
+    //SerialPortDLL *ptrSerialPort;
     //PinInterface *ptrPIN;
+
+    //QString CardValueRFID;
 };
 
 #endif // HOMEWINDOW_H
