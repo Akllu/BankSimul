@@ -101,10 +101,10 @@ private slots:
     void on_amountInsertClearButton_clicked();
     void on_amountInsertNextButton_clicked();
     void on_amountInsertCancelButton_clicked();
+    void on_amountInsertCommaButton_clicked();
 
 private:
     Ui::MainMenu *ui;
-    QString clickedNum; //Näppäimistöstä painettu näppäin
     QString wtdrAmount; //Käyttäjän syöttämä Muu summa
     QString trfAccNum;  //Saajan tilinumero
     QString trfAmount;  //Käyttäjän syöttämä tilisiirron summa
@@ -114,6 +114,7 @@ private:
     double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
     double transferAmount;  //Saajalle lähetettävä/Lähettäjältä vähennettävä summa
     double balance = 300; //Tähän käyttäjän saldo
+    int transferCommaCounter;    //Laskuri tilisiirron pilkkuja varten
 
 };
 

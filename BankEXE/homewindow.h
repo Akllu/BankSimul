@@ -25,6 +25,7 @@ public:
     //void getValueFromRFID();
 
 public slots:
+    void backToHome();
     //void dataFromRFID(QString);
 
 signals:
@@ -32,7 +33,6 @@ signals:
 
 private slots:
     void on_pushButton_clicked();
-    void backToHome();
 
 private:
     Ui::HomeWindow *ui;

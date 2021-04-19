@@ -7,6 +7,7 @@ MainMenu::MainMenu(QWidget *parent):
 {
     ui->setupUi(this);
     this->setWindowTitle("BankSimul");
+    transferCommaCounter = 0;
 
     mainMenuTimer = new QTimer(this);   //10s ajastin toiminnallisuuksille
     mainMenuTimer->setInterval(10000);
@@ -321,71 +322,61 @@ void MainMenu::on_trfAddAmountButton_clicked()
 
 void MainMenu::on_otherButton0_clicked()
 {
-    clickedNum = "0";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("0");
     resetTimer();
 }
 
 void MainMenu::on_otherButton1_clicked()
 {
-    clickedNum = "1";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("1");
     resetTimer();
 }
 
 void MainMenu::on_otherButton2_clicked()
 {
-    clickedNum = "2";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("2");
     resetTimer();
 }
 
 void MainMenu::on_otherButton3_clicked()
 {
-    clickedNum = "3";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("3");
     resetTimer();
 }
 
 void MainMenu::on_otherButton4_clicked()
 {
-    clickedNum = "4";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("4");
     resetTimer();
 }
 
 void MainMenu::on_otherButton5_clicked()
 {
-    clickedNum = "5";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("5");
     resetTimer();
 }
 
 void MainMenu::on_otherButton6_clicked()
 {
-    clickedNum = "6";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("6");
     resetTimer();
 }
 
 void MainMenu::on_otherButton7_clicked()
 {
-    clickedNum = "7";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("7");
     resetTimer();
 }
 
 void MainMenu::on_otherButton8_clicked()
 {
-    clickedNum = "8";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("8");
     resetTimer();
 }
 
 void MainMenu::on_otherButton9_clicked()
 {
-    clickedNum = "9";
-    insertOtherAmountNum(clickedNum);
+    insertOtherAmountNum("9");
     resetTimer();
 }
 
@@ -434,71 +425,61 @@ void MainMenu::on_otherCancelButton_clicked()
 
 void MainMenu::on_accNumButton0_clicked()
 {
-    clickedNum = "0";
-    insertAccNum(clickedNum);
+    insertAccNum("0");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton1_clicked()
 {
-    clickedNum = "1";
-    insertAccNum(clickedNum);
+    insertAccNum("1");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton2_clicked()
 {
-    clickedNum = "2";
-    insertAccNum(clickedNum);
+    insertAccNum("2");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton3_clicked()
 {
-    clickedNum = "3";
-    insertAccNum(clickedNum);
+    insertAccNum("3");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton4_clicked()
 {
-    clickedNum = "4";
-    insertAccNum(clickedNum);
+    insertAccNum("4");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton5_clicked()
 {
-    clickedNum = "5";
-    insertAccNum(clickedNum);
+    insertAccNum("5");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton6_clicked()
 {
-    clickedNum = "6";
-    insertAccNum(clickedNum);
+    insertAccNum("6");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton7_clicked()
 {
-    clickedNum = "7";
-    insertAccNum(clickedNum);
+    insertAccNum("7");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton8_clicked()
 {
-    clickedNum = "8";
-    insertAccNum(clickedNum);
+    insertAccNum("8");
     resetTimer();
 }
 
 void MainMenu::on_accNumButton9_clicked()
 {
-    clickedNum = "9";
-    insertAccNum(clickedNum);
+    insertAccNum("9");
     resetTimer();
 }
 
@@ -529,71 +510,75 @@ void MainMenu::on_accNumCancelButton_clicked()
 
 void MainMenu::on_amountInsertButton0_clicked()
 {
-    clickedNum = "0";
-    insertAmountNum(clickedNum);
+    insertAmountNum("0");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton1_clicked()
 {
-    clickedNum = "1";
-    insertAmountNum(clickedNum);
+    insertAmountNum("1");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton2_clicked()
 {
-    clickedNum = "2";
-    insertAmountNum(clickedNum);
+    insertAmountNum("2");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton3_clicked()
 {
-    clickedNum = "3";
-    insertAmountNum(clickedNum);
+    insertAmountNum("3");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton4_clicked()
 {
-    clickedNum = "4";
-    insertAmountNum(clickedNum);
+    insertAmountNum("4");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton5_clicked()
 {
-    clickedNum = "5";
-    insertAmountNum(clickedNum);
+    insertAmountNum("5");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton6_clicked()
 {
-    clickedNum = "6";
-    insertAmountNum(clickedNum);
+    insertAmountNum("6");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton7_clicked()
 {
-    clickedNum = "7";
-    insertAmountNum(clickedNum);
+    insertAmountNum("7");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton8_clicked()
 {
-    clickedNum = "8";
-    insertAmountNum(clickedNum);
+    insertAmountNum("8");
     resetTimer();
 }
 
 void MainMenu::on_amountInsertButton9_clicked()
 {
-    clickedNum = "9";
-    insertAmountNum(clickedNum);
+    insertAmountNum("9");
+    resetTimer();
+}
+
+void MainMenu::on_amountInsertCommaButton_clicked()
+{
+    if(transferCommaCounter == 0) //Varmistetaan ettei käyttäjä syötä montaa pilkkua
+    {
+        insertAmountNum(".");
+    }
+    else
+    {
+        QMessageBox::warning(this, "Virhe", "Liikaa desimaaleja syötetty!");
+    }
+    transferCommaCounter++;
     resetTimer();
 }
 
@@ -602,6 +587,7 @@ void MainMenu::on_amountInsertClearButton_clicked()
     ui->amountInsertLineEdit->clear();
     ui->trfAmountLineEdit->clear();
     trfAmount = "";
+    transferCommaCounter = 0;
     resetTimer();
 }
 
