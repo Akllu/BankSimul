@@ -9,6 +9,11 @@ MainMenu::MainMenu(QWidget *parent):
     this->setWindowTitle("BankSimul");
     transferCommaCounter = 0;
 
+    failMessage = new QMessageBox;     //Virheilmoitus jos saldo ei riitä
+    failMessage->setWindowTitle("Virheellinen rahasumma");
+    failMessage->setIcon(QMessageBox::Warning);
+    failMessage->setText("Tilin saldo ei riitä!");
+
     mainMenuTimer = new QTimer(this);   //10s ajastin toiminnallisuuksille
     mainMenuTimer->setInterval(10000);
     mainMenuTimer->setSingleShot(true);
@@ -28,6 +33,12 @@ MainMenu::~MainMenu()
 {
     delete ui;
     ui = nullptr;
+    delete failMessage;
+    failMessage = nullptr;
+    delete mainMenuTimer;
+    mainMenuTimer = nullptr;
+    delete homeWindowTimer;
+    homeWindowTimer = nullptr;
 }
 
 void MainMenu::insertOtherAmountNum(QString i)
@@ -54,26 +65,21 @@ void MainMenu::resetTimer()
     mainMenuTimer->start();
 }
 
-void MainMenu::withdrawSuccessful()
+void MainMenu::withdraw(double amount)
 {
-    QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
-    ui->stackedWidget->setCurrentIndex(0);
-    emit logoutSignal();
-}
-
-void MainMenu::withdrawFailed()
-{
-
-    QMessageBox *failMessage = new QMessageBox;
-    failMessage->setWindowTitle("Virheellinen rahasumma");
-    failMessage->setIcon(QMessageBox::Warning);
-    failMessage->setText("Tilin saldo ei riitä!");
-
-    failMessage->show();
-    QTimer::singleShot(10000, failMessage, SLOT(close()));
-    //QMessageBox::warning(this, "Virheellinen rahasumma", "Tilin saldo ei riitä!");
-    mainMenuTimer->start();
-
+    if(balance < amount)    //Tarkistetaan onko käyttäjällä tarpeeksi rahaa nostoon
+    {
+        failMessage->show();
+        QTimer::singleShot(10000, failMessage, SLOT(close()));
+        mainMenuTimer->start();
+    }
+    else
+    {
+        //Vähennä nostettava summa saldosta!
+        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
+        ui->stackedWidget->setCurrentIndex(0);
+        emit logoutSignal();
+    }
 }
 
 void MainMenu::startHomeWindowTimer()
@@ -138,85 +144,37 @@ void MainMenu::on_mainLogoutButton_clicked()
 void MainMenu::on_wtdrButton20_clicked()
 {
     mainMenuTimer->stop();
-    if (balance < 20) //Tarkistetaan voidaanko syötetty summa nostaa
-    {
-        withdrawFailed();
-    }
-    else
-    {
-        //Vähennetään kirjautuneen tililtä 20€
-        withdrawSuccessful();
-    }
+    withdraw(20);
 }
 
 void MainMenu::on_wtdrButton40_clicked()
 {
     mainMenuTimer->stop();
-    if (balance < 40)
-    {
-        withdrawFailed();
-    }
-    else
-    {
-        //Vähennetään kirjautuneen tililtä 40€
-        withdrawSuccessful();
-    }
+    withdraw(40);
 }
 
 void MainMenu::on_wtdrButton60_clicked()
 {
     mainMenuTimer->stop();
-    if (balance < 60)
-    {
-        withdrawFailed();
-    }
-    else
-    {
-        //Vähennetään kirjautuneen tililtä 60€
-        withdrawSuccessful();
-    }
+    withdraw(60);
 }
 
 void MainMenu::on_wtdrButton100_clicked()
 {
     mainMenuTimer->stop();
-    if (balance < 100)
-    {
-        withdrawFailed();
-    }
-    else
-    {
-        //Vähennetään kirjautuneen tililtä 100€
-        withdrawSuccessful();
-    }
+    withdraw(100);
 }
 
 void MainMenu::on_wtdrButton200_clicked()
 {
     mainMenuTimer->stop();
-    if (balance < 200)
-    {
-        withdrawFailed();
-    }
-    else
-    {
-        //Vähennetään kirjautuneen tililtä 200€
-        withdrawSuccessful();
-    }
+    withdraw(200);
 }
 
 void MainMenu::on_wtdrButton500_clicked()
 {
     mainMenuTimer->stop();
-    if (balance < 500)
-    {
-        withdrawFailed();
-    }
-    else
-    {
-        //Vähennetään kirjautuneen tililtä 500€
-        withdrawSuccessful();
-    }
+    withdraw(500);
 }
 
 void MainMenu::on_wtdrButtonOther_clicked()
@@ -280,7 +238,9 @@ void MainMenu::on_trfNextButton_clicked()
     {
         if(balance < transferAmount)    //Tarkistetaan onko käyttäjällä rahaa siirtoon
         {
-            withdrawFailed();
+            failMessage->show();
+            QTimer::singleShot(10000, failMessage, SLOT(close()));
+            mainMenuTimer->start();
         }
         else
         {
@@ -399,7 +359,9 @@ void MainMenu::on_otherNextButton_clicked()
 
     else if (balance < wtdrOtherAmount) //Tarkistetaan voidaanko syötetty summa nostaa
     {
-        withdrawFailed();
+        failMessage->show();
+        QTimer::singleShot(10000, failMessage, SLOT(close()));
+        mainMenuTimer->start();
         on_otherClearButton_clicked();
         wtdrOtherAmount = 0;
     }
@@ -407,9 +369,11 @@ void MainMenu::on_otherNextButton_clicked()
     else
     {
         //Vähennetään kirjautuneen tililtä annettu summa
-        withdrawSuccessful();
+        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
+        ui->stackedWidget->setCurrentIndex(0);
         on_otherClearButton_clicked();
         wtdrOtherAmount = 0;
+        emit logoutSignal();
     }
 }
 

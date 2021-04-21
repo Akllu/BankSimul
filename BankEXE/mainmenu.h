@@ -4,7 +4,6 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QTimer>
-#include <QIntValidator>
 #include <cmath>
 #include <QDebug>
 
@@ -23,8 +22,7 @@ public:
     void insertAccNum(QString i);
     void insertAmountNum(QString i);
     void resetTimer();
-    void withdrawSuccessful();
-    void withdrawFailed();
+    void withdraw(double amount);
     void startHomeWindowTimer();
 
 public slots:
@@ -110,6 +108,7 @@ private:
     QString trfAmount;  //Käyttäjän syöttämä tilisiirron summa
     QTimer *mainMenuTimer;  //10s ajastimet
     QTimer *homeWindowTimer;    //30s ajastin
+    QMessageBox *failMessage;   //Ilmoitus jos saldo ei riitä
 
     double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
     double transferAmount;  //Saajalle lähetettävä/Lähettäjältä vähennettävä summa
