@@ -1518,7 +1518,7 @@ color: rgb(255, 255, 255);</string>
             <string notr="true">color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>Tilinumero:</string>
+            <string>Saldo:</string>
            </property>
           </widget>
          </item>
@@ -1541,7 +1541,7 @@ color: rgb(255, 255, 255);</string>
           </widget>
          </item>
          <item row="2" column="1" colspan="2">
-          <widget class="QLabel" name="wtdrAccountLabel">
+          <widget class="QLabel" name="wtdrBalanceLabel">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -1551,7 +1551,7 @@ color: rgb(255, 255, 255);</string>
             <string notr="true">color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>Tähän tilinumero</string>
+            <string>Tähän saldo</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1566,52 +1566,25 @@ color: rgb(255, 255, 255);</string>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <layout class="QGridLayout" name="blcGridLayout">
-         <item row="9" column="0" colspan="3">
-          <widget class="QPushButton" name="blcCloseButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(112, 112, 112);
-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>Sulje</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="blcHeaderLabel4">
+         <item row="3" column="1" colspan="3">
+          <widget class="QLabel" name="blcBalanceLabel">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(0, 0, 255);
-color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>Saldo:</string>
+            <string>Tähän saldo</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
-         <item row="5" column="0" colspan="3">
+         <item row="4" column="0" colspan="4">
           <widget class="QLabel" name="blcHeaderLabel5">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1638,6 +1611,85 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
+         <item row="0" column="0" colspan="4">
+          <widget class="QLabel" name="blcHeaderLabel">
+           <property name="font">
+            <font>
+             <pointsize>26</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>Näytä saldo</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="blcHeaderLabel4">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>Saldo:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="blcHeaderLabel7">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>Määrä:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="3">
+          <widget class="QLabel" name="blcAccountLabel">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>Tähän tilinumero</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="blcHeaderLabel2">
            <property name="font">
@@ -1655,21 +1707,23 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="0" rowspan="3" colspan="3">
-          <widget class="QLabel" name="blcTransactionsLabel">
+         <item row="5" column="0">
+          <widget class="QLabel" name="blcHeaderLabel6">
            <property name="font">
             <font>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 170, 0);</string>
            </property>
            <property name="text">
-            <string>Tähän tilitapahtumat</string>
+            <string>Tapahtumatyyppi:</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -1690,43 +1744,7 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1" colspan="2">
-          <widget class="QLabel" name="blcBalanceLabel">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>Tähän saldo</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1" colspan="2">
-          <widget class="QLabel" name="blcAccountLabel">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>Tähän tilinumero</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" colspan="2">
+         <item row="1" column="1" colspan="3">
           <widget class="QLabel" name="blcNameLabel">
            <property name="font">
             <font>
@@ -1744,11 +1762,11 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0" colspan="3">
-          <widget class="QLabel" name="blcHeaderLabel">
+         <item row="5" column="2" colspan="2">
+          <widget class="QLabel" name="blcHeaderLabel8">
            <property name="font">
             <font>
-             <pointsize>26</pointsize>
+             <pointsize>14</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1757,38 +1775,15 @@ color: rgb(255, 255, 255);</string>
             <string notr="true">color: rgb(255, 170, 0);</string>
            </property>
            <property name="text">
-            <string>Näytä saldo</string>
+            <string>Maksupäivä:</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="transactionPage">
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <layout class="QGridLayout" name="trcGridLayout">
-         <item row="1" column="1" colspan="2">
-          <widget class="QLabel" name="trcNameLabel">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Tähän nimi</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0" colspan="3">
-          <widget class="QPushButton" name="trcCloseButton">
+         <item row="9" column="0" colspan="4">
+          <widget class="QPushButton" name="blcCloseButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -1811,100 +1806,95 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1" colspan="2">
-          <widget class="QLabel" name="trcBalanceLabel">
+         <item row="6" column="2" rowspan="3" colspan="2">
+          <widget class="QLabel" name="blcDateLabel">
            <property name="font">
             <font>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Tähän saldo</string>
+            <string>Päiväykset</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-         <item row="2" column="1" colspan="2">
-          <widget class="QLabel" name="trcAccountLabel">
+         <item row="6" column="0" rowspan="3">
+          <widget class="QLabel" name="blcEventLabel">
            <property name="font">
             <font>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Tähän tilinumero</string>
+            <string>Tapahtumatyypit</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="trcHeaderLabel2">
+         <item row="6" column="1" rowspan="3">
+          <widget class="QLabel" name="blcAmountLabel">
            <property name="font">
             <font>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Rahasummat</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="transactionPage">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QGridLayout" name="trcGridLayout">
+         <item row="5" column="2" colspan="2">
+          <widget class="QLabel" name="trcHeaderLabel8">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 170, 0);</string>
            </property>
            <property name="text">
-            <string>Kirjautuneena:</string>
+            <string>Maksupäivä:</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-         <item row="5" column="0" rowspan="3" colspan="3">
-          <widget class="QLabel" name="trcTransactionsLabel">
+         <item row="7" column="0" rowspan="3">
+          <widget class="QLabel" name="trcEventLabel">
            <property name="font">
             <font>
-             <pointsize>16</pointsize>
+             <pointsize>14</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Tähän tilitapahtumat</string>
+            <string>Tapahtumatyypit</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="trcHeaderLabel3">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Tilinumero:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0" colspan="3">
-          <widget class="QLabel" name="trcHeaderLabel5">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Viimeisimmät tilitapahtumat:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
+         <item row="10" column="0" rowspan="2" colspan="2">
           <widget class="QPushButton" name="trcPreviousButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1928,11 +1918,55 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0" colspan="3">
-          <widget class="QLabel" name="trcHeaderLabel">
+         <item row="1" column="1" colspan="3">
+          <widget class="QLabel" name="trcNameLabel">
            <property name="font">
             <font>
-             <pointsize>26</pointsize>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tähän nimi</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="trcHeaderLabel3">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tilinumero:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1" rowspan="3">
+          <widget class="QLabel" name="trcAmountLabel">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Rahasummat</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="trcHeaderLabel7">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -1941,7 +1975,7 @@ color: rgb(255, 255, 255);</string>
             <string notr="true">color: rgb(255, 170, 0);</string>
            </property>
            <property name="text">
-            <string>Selaa tilitapahtumia</string>
+            <string>Määrä:</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -1962,7 +1996,42 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="2">
+         <item row="3" column="1" colspan="3">
+          <widget class="QLabel" name="trcBalanceLabel">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tähän saldo</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="4">
+          <widget class="QLabel" name="trcHeaderLabel">
+           <property name="font">
+            <font>
+             <pointsize>26</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>Selaa tilitapahtumia</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="2" rowspan="2" colspan="2">
           <widget class="QPushButton" name="trcNextButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1983,6 +2052,114 @@ color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
             <string>Eteenpäin</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0" colspan="4">
+          <widget class="QLabel" name="trcHeaderLabel5">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Viimeisimmät tilitapahtumat:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="3">
+          <widget class="QLabel" name="trcAccountLabel">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tähän tilinumero</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="trcHeaderLabel6">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>Tapahtumatyyppi:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2" rowspan="3" colspan="2">
+          <widget class="QLabel" name="trcDateLabel">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Päiväykset</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="trcHeaderLabel2">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>Kirjautuneena:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="0" rowspan="2" colspan="4">
+          <widget class="QPushButton" name="trcCloseButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(112, 112, 112);
+color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>Sulje</string>
            </property>
           </widget>
          </item>

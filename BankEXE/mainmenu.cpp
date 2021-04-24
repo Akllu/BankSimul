@@ -65,26 +65,32 @@ void MainMenu::resetTimer()
     mainMenuTimer->start();
 }
 
-void MainMenu::withdraw(double amount)
-{
-    if(balance < amount)    //Tarkistetaan onko käyttäjällä tarpeeksi rahaa nostoon
-    {
-        failMessage->show();
-        QTimer::singleShot(10000, failMessage, SLOT(close()));
-        mainMenuTimer->start();
-    }
-    else
-    {
-        //Vähennä nostettava summa saldosta!
-        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
-        ui->stackedWidget->setCurrentIndex(0);
-        emit logoutSignal();
-    }
-}
-
 void MainMenu::startHomeWindowTimer()
 {
     homeWindowTimer->start();
+}
+
+void MainMenu::saveID(QString cardID)
+{
+    customerCardID = cardID;
+}
+
+void MainMenu::setCustomerData(QString name, QString accNum, QString balance)
+{
+    customerName = name;
+    customerAccountNumber = accNum;
+    customerBalance = balance;
+    ui->mainNameLabel->setText(name);
+}
+
+void MainMenu::setTransactions(QString event, QString amount, QString date)
+{
+    ui->blcEventLabel->setText(event);
+    ui->blcAmountLabel->setText(amount);
+    ui->blcDateLabel->setText(date);
+    ui->trcEventLabel->setText(event);
+    ui->trcAmountLabel->setText(amount);
+    ui->trcDateLabel->setText(date);
 }
 
 void MainMenu::backToMainMenu()
@@ -101,6 +107,51 @@ void MainMenu::backToMainMenu()
     homeWindowTimer->start();
 }
 
+void MainMenu::withdrawResult(QString result)
+{
+    if(result == "false")    //Jos käyttäjällä ei ollut tarpeeksi rahaa nostoon
+    {
+        failMessage->show();
+        QTimer::singleShot(10000, failMessage, SLOT(close()));
+        mainMenuTimer->start();
+        on_otherClearButton_clicked();
+    }
+    else if(result == "error")
+    {
+        QMessageBox::warning(this, "Virhe", "Virhe tietokantayhteydessä!");
+        mainMenuTimer->start();
+        on_otherClearButton_clicked();
+    }
+    else
+    {
+        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
+        ui->stackedWidget->setCurrentIndex(0);
+        on_otherClearButton_clicked();
+        emit logoutSignal();
+    }
+}
+
+void MainMenu::transferResult(QString result)
+{
+    if(result == "false")   //Jos käyttäjällä ei ollut tarpeeksi rahaa siirtoon
+    {
+        failMessage->show();
+        QTimer::singleShot(10000, failMessage, SLOT(close()));
+        mainMenuTimer->start();
+    }
+    else if(result == "error")
+    {
+        QMessageBox::warning(this, "Virhe", "Virhe tietokantayhteydessä!");
+        mainMenuTimer->start();
+    }
+    else
+    {
+        QMessageBox::information(this, "Onnistunut siirto", "Tilisiirto onnistui!");
+        on_trfCloseButton_clicked();
+        emit updateCustomerData(customerCardID);
+    }
+}
+
 
 /***************PÄÄVALIKKO***************/
 
@@ -108,6 +159,8 @@ void MainMenu::on_mainWithdrawButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
+    ui->wtdrNameLabel->setText(customerName);
+    ui->wtdrBalanceLabel->setText(customerBalance);
     ui->stackedWidget->setCurrentIndex(1);    
 }
 
@@ -115,6 +168,10 @@ void MainMenu::on_mainBalanceButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
+    emit transactions(customerCardID);
+    ui->blcNameLabel->setText(customerName);
+    ui->blcAccountLabel->setText(customerAccountNumber);
+    ui->blcBalanceLabel->setText(customerBalance);
     ui->stackedWidget->setCurrentIndex(2);    
 }
 
@@ -122,6 +179,10 @@ void MainMenu::on_mainTransactionButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
+    emit transactions(customerCardID);
+    ui->trcNameLabel->setText(customerName);
+    ui->trcAccountLabel->setText(customerAccountNumber);
+    ui->trcBalanceLabel->setText(customerBalance);
     ui->stackedWidget->setCurrentIndex(3);    
 }
 
@@ -129,12 +190,16 @@ void MainMenu::on_mainTransferButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
+    ui->trfNameLabel->setText(customerName);
+    ui->trfAccountNumLabel->setText(customerAccountNumber);
+    ui->trfBalanceLabel->setText(customerBalance);
     ui->stackedWidget->setCurrentIndex(4);    
 }
 
 void MainMenu::on_mainLogoutButton_clicked()
 {
     homeWindowTimer->stop();
+    customerName = "";
     emit logoutSignal();
 }
 
@@ -144,37 +209,37 @@ void MainMenu::on_mainLogoutButton_clicked()
 void MainMenu::on_wtdrButton20_clicked()
 {
     mainMenuTimer->stop();
-    withdraw(20);
+    emit withdraw(3, 20);
 }
 
 void MainMenu::on_wtdrButton40_clicked()
 {
     mainMenuTimer->stop();
-    withdraw(40);
+    emit withdraw(3, 40);
 }
 
 void MainMenu::on_wtdrButton60_clicked()
 {
     mainMenuTimer->stop();
-    withdraw(60);
+    emit withdraw(3, 60);
 }
 
 void MainMenu::on_wtdrButton100_clicked()
 {
     mainMenuTimer->stop();
-    withdraw(100);
+    emit withdraw(3, 100);
 }
 
 void MainMenu::on_wtdrButton200_clicked()
 {
     mainMenuTimer->stop();
-    withdraw(200);
+    emit withdraw(3, 200);
 }
 
 void MainMenu::on_wtdrButton500_clicked()
 {
     mainMenuTimer->stop();
-    withdraw(500);
+    emit withdraw(3, 500);
 }
 
 void MainMenu::on_wtdrButtonOther_clicked()
@@ -228,7 +293,10 @@ void MainMenu::on_trcCloseButton_clicked()
 void MainMenu::on_trfNextButton_clicked()
 {
     mainMenuTimer->stop();
-    transferAmount = trfAmount.toDouble();
+    int transferAccount;
+    transferAccount = trfAccNum.toInt();    //Otetaan käyttäjän syöttämä tilinro talteen
+    double transferAmount;
+    transferAmount = trfAmount.toDouble();  //Otetaan käyttäjän syöttämä siirrettävä summa talteen
     QMessageBox confirmation;
     confirmation.setText(tr("Haluatko varmasti siirtää valitun summan?"));
     QAbstractButton *pButtonYes = confirmation.addButton(tr("Kyllä"), QMessageBox::YesRole);
@@ -236,19 +304,7 @@ void MainMenu::on_trfNextButton_clicked()
     confirmation.exec();
     if(confirmation.clickedButton() == pButtonYes)
     {
-        if(balance < transferAmount)    //Tarkistetaan onko käyttäjällä rahaa siirtoon
-        {
-            failMessage->show();
-            QTimer::singleShot(10000, failMessage, SLOT(close()));
-            mainMenuTimer->start();
-        }
-        else
-        {
-            //Siirrä rahat ja vähennä summa lähettäjältä
-            //HUOM! trfAccNum = Tilinumero johon rahat siirretään JA transferAmount = Siirrettävä summa
-            QMessageBox::information(this, "Onnistunut siirto", "Tilisiirto onnistui!");
-            on_trfCloseButton_clicked();
-        }
+        emit transfer(3, transferAccount, transferAmount);
     }
     else
     {
@@ -349,31 +405,16 @@ void MainMenu::on_otherClearButton_clicked()
 
 void MainMenu::on_otherNextButton_clicked()
 {
+    double wtdrOtherAmount;
     wtdrOtherAmount = ui->otherAmountLineEdit->text().toDouble();    //Otetaan käyttäjän syöttämä rahasumma talteen
     if(std::fmod(wtdrOtherAmount, 10) != 0)
     {
         QMessageBox::warning(this, "Virheellinen rahasumma", "Huomioithan, että pienin nostettava seteli on 10€");
         on_otherClearButton_clicked();
-        wtdrOtherAmount = 0;
     }
-
-    else if (balance < wtdrOtherAmount) //Tarkistetaan voidaanko syötetty summa nostaa
-    {
-        failMessage->show();
-        QTimer::singleShot(10000, failMessage, SLOT(close()));
-        mainMenuTimer->start();
-        on_otherClearButton_clicked();
-        wtdrOtherAmount = 0;
-    }
-
     else
     {
-        //Vähennetään kirjautuneen tililtä annettu summa
-        QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
-        ui->stackedWidget->setCurrentIndex(0);
-        on_otherClearButton_clicked();
-        wtdrOtherAmount = 0;
-        emit logoutSignal();
+        emit withdraw(3, wtdrOtherAmount);
     }
 }
 

@@ -22,14 +22,22 @@ public:
     void insertAccNum(QString i);
     void insertAmountNum(QString i);
     void resetTimer();
-    void withdraw(double amount);
     void startHomeWindowTimer();
+    void saveID(QString cardID);
+    void setCustomerData(QString name, QString accNum, QString balance);
+    void setTransactions(QString event, QString amount, QString date);
 
 public slots:
     void backToMainMenu();
+    void withdrawResult(QString result);
+    void transferResult(QString result);
 
 signals:
     void logoutSignal();
+    void withdraw(int,double);
+    void transfer(int,int,double);
+    void updateCustomerData(QString);
+    void transactions(QString);
 
 private slots:
     void on_mainWithdrawButton_clicked();   //Päävalikko
@@ -105,16 +113,16 @@ private:
     Ui::MainMenu *ui;
     QString wtdrAmount; //Käyttäjän syöttämä Muu summa
     QString trfAccNum;  //Saajan tilinumero
-    QString trfAmount;  //Käyttäjän syöttämä tilisiirron summa
-    QTimer *mainMenuTimer;  //10s ajastimet
+    QString trfAmount;  //Tilisiirron summa
+    QString customerName;   //Käyttäjän nimi
+    QString customerAccountNumber;  //Käyttäjän tilinumero
+    QString customerBalance;    //Käyttäjän saldo
+    QString customerCardID;     //Käyttäjän kortin sarjanumero
+    QTimer *mainMenuTimer;      //10s ajastimet
     QTimer *homeWindowTimer;    //30s ajastin
     QMessageBox *failMessage;   //Ilmoitus jos saldo ei riitä
 
-    double wtdrOtherAmount; //Käyttäjältä vähennettävä muu summa
-    double transferAmount;  //Saajalle lähetettävä/Lähettäjältä vähennettävä summa
-    double balance = 300; //Tähän käyttäjän saldo
     int transferCommaCounter;    //Laskuri tilisiirron pilkkuja varten
-
 };
 
 #endif // MAINMENU_H

@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,3 +28,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+win32: LIBS += -L$$PWD/../../DLLRestAPI/build-DLLRestAPI-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/ -lDLLRestAPI
+
+INCLUDEPATH += $$PWD/../../DLLRestAPI/DLLRestAPI
+DEPENDPATH += $$PWD/../../DLLRestAPI/DLLRestAPI
