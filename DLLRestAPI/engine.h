@@ -13,34 +13,38 @@ public:
     Engine(QObject *parent = nullptr);
     ~Engine();
     void returnLoginResult(QString cardID, QString PINCode);
-    void getName(QString cardID);
-    void withdraw(QString cardID, double amount);
-    void balance(QString ID);
-    void transfer(QString senderID, QString receiverID, double amount);
+    void lockCard(QString cardID);
+    void getCustomerData(QString cardID);
+    void getTransactions(QString cardID);
+    void withdraw(int cardID, double amount);
+    void transfer(int senderAccNum, int receiverAccNum, double amount);
 
 signals:
     void returnLoginResult(QString);
-    void returnNameResult(QString);
+    void returnCustomerData(QString,QString,QString);
+    void returnTransactions(QString,QString,QString);
     void returnWithdrawResult(QString);
-    void returnBalanceResult(QString);
     void returnTransferResult(QString);
 
 private slots:
     void loginSlot(QNetworkReply *reply);
-    void nameSlot(QNetworkReply *reply);
+    void cardLockSlot(QNetworkReply *reply);
+    void customerSlot(QNetworkReply *reply);
+    void transactionsSlot(QNetworkReply *reply);
     void withdrawSlot(QNetworkReply *reply);
-    void balanceSlot(QNetworkReply *reply);
     void transferSlot(QNetworkReply *reply);
 
 private:
     QNetworkAccessManager *loginManager;
     QNetworkReply *loginReply;
-    QNetworkAccessManager *nameManager;
-    QNetworkReply *nameReply;
+    QNetworkAccessManager *cardLockManager;
+    QNetworkReply *cardLockReply;
+    QNetworkAccessManager *customerManager;
+    QNetworkReply *customerReply;
+    QNetworkAccessManager *transactionManager;
+    QNetworkReply *transactionReply;
     QNetworkAccessManager *withdrawManager;
     QNetworkReply *withdrawReply;
-    QNetworkAccessManager *balanceManager;
-    QNetworkReply *balanceReply;
     QNetworkAccessManager *transferManager;
     QNetworkReply *transferReply;
 };

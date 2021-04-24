@@ -4,20 +4,20 @@ DLLRestAPI::DLLRestAPI()
 {
     ptrEngine = new Engine;
 
-    connect(ptrEngine, SIGNAL(returnLoginResult(QString)),
-            this, SLOT(sendLoginResultToEXE(QString)));
+    connect(ptrEngine, SIGNAL(returnLoginResult(QString)),  //Yhdistetään enginen signaalit slotteihin
+            this, SLOT(sendLoginResult(QString)));
 
-    connect(ptrEngine, SIGNAL(returnNameResult(QString)),
-            this, SLOT(sendNameResultToEXE(QString)));
+    connect(ptrEngine, SIGNAL(returnCustomerData(QString,QString,QString)),
+            this, SLOT(sendCustomerDataResult(QString,QString,QString)));
+
+    connect(ptrEngine, SIGNAL(returnTransactions(QString,QString,QString)),
+            this, SLOT(sendTransactionResult(QString,QString,QString)));
 
     connect(ptrEngine, SIGNAL(returnWithdrawResult(QString)),
-            this, SLOT(sendWithdrawResultToEXE(QString)));
-
-    connect(ptrEngine, SIGNAL(returnBalanceResult(QString)),
-            this, SLOT(sendBalanceResultToEXE(QString)));
+            this, SLOT(sendWithdrawResult(QString)));
 
     connect(ptrEngine, SIGNAL(returnTransferResult(QString)),
-            this, SLOT(sendTransferResultToEXE(QString)));
+            this, SLOT(sendTransferResult(QString)));
 }
 
 DLLRestAPI::~DLLRestAPI()
@@ -31,47 +31,55 @@ void DLLRestAPI::login(QString cardID, QString PINCode)
     ptrEngine->returnLoginResult(cardID, PINCode);
 }
 
-void DLLRestAPI::name(QString cardID)
+void DLLRestAPI::lockCard(QString cardID)
 {
-    ptrEngine->getName(cardID);
+    ptrEngine->lockCard(cardID);
 }
 
-void DLLRestAPI::withdraw(QString cardID, double amount)
+void DLLRestAPI::getCustomerData(QString cardID)
+{
+    ptrEngine->getCustomerData(cardID);
+}
+
+void DLLRestAPI::getTransactions(QString cardID)
+{
+    ptrEngine->getTransactions(cardID);
+}
+
+void DLLRestAPI::withdraw(int cardID, double amount)
 {
     ptrEngine->withdraw(cardID, amount);
 }
 
-void DLLRestAPI::balance(QString ID)
+void DLLRestAPI::transfer(int senderAccNum, int receiverAccNum, double amount)
 {
-    ptrEngine->balance(ID);
+    ptrEngine->transfer(senderAccNum, receiverAccNum, amount);
 }
 
-void DLLRestAPI::transfer(QString senderID, QString receiverID, double amount)
-{
-    ptrEngine->transfer(senderID, receiverID, amount);
-}
 
-void DLLRestAPI::sendLoginResultToEXE(QString result)
+/***************Signaalit EXE:lle***************/
+
+void DLLRestAPI::sendLoginResult(QString result)
 {
     emit loginResultToEXE(result);
 }
 
-void DLLRestAPI::sendNameResultToEXE(QString result)
+void DLLRestAPI::sendCustomerDataResult(QString name, QString accNum, QString balance)
 {
-    emit nameResultToEXE(result);
+    emit customerDataToEXE(name,accNum,balance);
 }
 
-void DLLRestAPI::sendWithdrawResultToEXE(QString result)
+void DLLRestAPI::sendTransactionResult(QString event, QString amount, QString date)
+{
+    emit transactionsToEXE(event,amount,date);
+}
+
+void DLLRestAPI::sendWithdrawResult(QString result)
 {
     emit withdrawResultToEXE(result);
 }
 
-void DLLRestAPI::sendBalanceResultToEXE(QString result)
-{
-    emit balanceResultToEXE(result);
-}
-
-void DLLRestAPI::sendTransferResultToEXE(QString result)
+void DLLRestAPI::sendTransferResult(QString result)
 {
     emit transferResultToEXE(result);
 }
