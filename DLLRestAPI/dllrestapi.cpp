@@ -41,9 +41,9 @@ void DLLRestAPI::getCustomerData(QString cardID)
     ptrEngine->getCustomerData(cardID);
 }
 
-void DLLRestAPI::getTransactions(QString cardID)
+void DLLRestAPI::getTransactions(QString cardID, QString startingPoint)
 {
-    ptrEngine->getTransactions(cardID);
+    ptrEngine->getTransactions(cardID,startingPoint);
 }
 
 void DLLRestAPI::withdraw(int cardID, double amount)

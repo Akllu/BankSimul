@@ -64,7 +64,7 @@ void Engine::lockCard(QString cardID)
 {
     QJsonObject json_obj;
     json_obj.insert("Tunnus_kortti", cardID);
-    json_obj.insert("Lukkotieto", 1);
+    json_obj.insert("lukittu", 1);
     QString site_url="http://localhost:3000/kortti/"+cardID;
     QString credentials="pankki:p1234";
     QNetworkRequest request((site_url));
@@ -153,9 +153,9 @@ void Engine::customerSlot(QNetworkReply *reply)
 
 /***************TILITAPAHTUMAT***************/
 
-void Engine::getTransactions(QString cardID)
+void Engine::getTransactions(QString cardID, QString startingPoint)
 {
-    QString site_url="http://localhost:3000/saldo/tapahtumat/"+cardID;
+    QString site_url="http://localhost:3000/saldo/tapahtumat/"+cardID+"/"+startingPoint;
     QString credentials="pankki:p1234";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -188,14 +188,13 @@ void Engine::transactionsSlot(QNetworkReply *reply)
     QString date;
     foreach(const QJsonValue &value, json_array)
     {
-        QJsonObject json_obj=value.toObject();
+        QJsonObject json_obj = value.toObject();
         event += json_obj["Tapahtuma_tyyppi"].toString()+"\r\n\n";
         amount += QString::number(json_obj["Rahan_maara"].toDouble())+"€"+"\r\n\n";
         date += json_obj["tapahtuma"].toString()+"\r\n\n";
     }
-    qDebug() << date;
     emit returnTransactions(event,amount,date);
-
+    qDebug() << response_data;
     transactionReply->deleteLater();
     reply->deleteLater();
     transactionManager->deleteLater();

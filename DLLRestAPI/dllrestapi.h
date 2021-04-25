@@ -17,7 +17,7 @@ public:
     void login(QString cardID, QString PINCode);    //Kirjautuminen
     void lockCard(QString cardID);              //Kortin lukitseminen
     void getCustomerData(QString cardID);       //Käyttäjän tietojen hakeminen
-    void getTransactions(QString cardID);       //Tilitietojen hakeminen
+    void getTransactions(QString cardID, QString startingPoint); //Tilitietojen hakeminen
     void withdraw(int cardID, double amount);   //Nosta rahaa
     void transfer(int senderAccNum, int receiverAccNum, double amount); //Tilisiirto
 
