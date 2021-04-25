@@ -41,8 +41,8 @@ HomeWindow::HomeWindow(QWidget *parent)
     connect(ptrMainMenu, SIGNAL(updateCustomerData(QString)),
             this, SLOT(getCustomerData(QString)));
 
-    connect(ptrMainMenu, SIGNAL(transactions(QString)),     //Tilitapahtumien haku
-            this, SLOT(getTransactions(QString)));
+    connect(ptrMainMenu, SIGNAL(transactions(QString,QString)),     //Tilitapahtumien haku
+            this, SLOT(getTransactions(QString,QString)));
     connect(ptrRestAPI, SIGNAL(transactionsToEXE(QString,QString,QString)),
             this, SLOT(handleTransactions(QString,QString,QString)));
 
@@ -144,16 +144,15 @@ void HomeWindow::login(QString result)
     }
 }
 
-
 void HomeWindow::getCustomerData(QString cardID)
 {
     ptrRestAPI->getCustomerData(cardID);
     ptrMainMenu->saveID(cardID);
 }
 
-void HomeWindow::getTransactions(QString cardID)
+void HomeWindow::getTransactions(QString cardID, QString startingPoint)
 {
-    ptrRestAPI->getTransactions(cardID);
+    ptrRestAPI->getTransactions(cardID,startingPoint);
 }
 
 void HomeWindow::handleWithdraw(int ID, double amount)

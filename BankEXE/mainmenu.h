@@ -37,7 +37,7 @@ signals:
     void withdraw(int,double);
     void transfer(int,int,double);
     void updateCustomerData(QString);
-    void transactions(QString);
+    void transactions(QString,QString);
 
 private slots:
     void on_mainWithdrawButton_clicked();   //Päävalikko
@@ -123,6 +123,7 @@ private:
     QMessageBox *failMessage;   //Ilmoitus jos saldo ei riitä
 
     int transferCommaCounter;    //Laskuri tilisiirron pilkkuja varten
+    int startingPoint;
 };
 
 #endif // MAINMENU_H

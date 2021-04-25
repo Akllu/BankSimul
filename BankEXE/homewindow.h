@@ -30,8 +30,7 @@ public slots:
     //void dataFromRFID(QString);
     void login(QString);
     void getCustomerData(QString cardID);
-    void getTransactions(QString cardID);
-
+    void getTransactions(QString cardID, QString startingPoint);
 
 signals:
     //void readRFID();
