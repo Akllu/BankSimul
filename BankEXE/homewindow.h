@@ -8,8 +8,8 @@ Aleksi Kalliokoski TVT20SPL
 #include <QMainWindow>
 
 #include "mainmenu.h"
-//#include "serialportdll.h"
-//#include "pininterface.h"
+#include "serialportdll.h"
+#include "pininterface.h"
 #include "dllrestapi.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,14 +23,15 @@ class HomeWindow : public QMainWindow
 public:
     HomeWindow(QWidget *parent = nullptr);
     ~HomeWindow();
-    //void getValueFromRFID();
 
 public slots:
     void backToHome();
-    //void dataFromRFID(QString);
-    void login(QString);
+    void getValueFromRFID();
+    void dataFromRFID(QString);
+    void login();
+    void loginResult(QString);
     void getCustomerData(QString cardID);
-    void getTransactions(QString cardID, QString startingPoint);
+    void getTransactions(QString cardID, int startingPoint);
 
 signals:
     //void readRFID();
@@ -39,17 +40,18 @@ private slots:
     void on_pushButton_clicked();
     void handleWithdraw(int ID, double amount);
     void handleTransfer(int senderAccNum, int receiverAccNum, double amount);
-    void handleCustomerData(QString name, QString accNum, QString balance);
+    void handleCustomerData(QString nameID, QString name, QString accNum, QString balance);
     void handleTransactions(QString event, QString amount, QString date);
 
 private:
     Ui::HomeWindow *ui;
     MainMenu *ptrMainMenu;
-    //SerialPortDLL *ptrSerialPort;
-    //PinInterface *ptrPIN;
+    SerialPortDLL *ptrSerialPort;
+    PinInterface *ptrPIN;
     DLLRestAPI *ptrRestAPI;
 
-    //QString CardValueRFID;
+    QString cardNum;
+    QString cardPIN;
     short loginCounter;
 };
 

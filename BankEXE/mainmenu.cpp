@@ -76,8 +76,9 @@ void MainMenu::saveID(QString cardID)
     customerCardID = cardID;
 }
 
-void MainMenu::setCustomerData(QString name, QString accNum, QString balance)
+void MainMenu::setCustomerData(QString nameID, QString name, QString accNum, QString balance)
 {
+    customerID = nameID.toInt();
     customerName = name;
     customerAccountNumber = accNum;
     customerBalance = balance;
@@ -161,7 +162,7 @@ void MainMenu::on_mainWithdrawButton_clicked()
     homeWindowTimer->stop();
     mainMenuTimer->start();
     ui->wtdrNameLabel->setText(customerName);
-    ui->wtdrBalanceLabel->setText(customerBalance);
+    ui->wtdrBalanceLabel->setText(customerBalance+"€");
     ui->stackedWidget->setCurrentIndex(1);    
 }
 
@@ -169,10 +170,10 @@ void MainMenu::on_mainBalanceButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
-    emit transactions(customerCardID,"0");
+    emit transactions(customerCardID,0);
     ui->blcNameLabel->setText(customerName);
     ui->blcAccountLabel->setText(customerAccountNumber);
-    ui->blcBalanceLabel->setText(customerBalance);
+    ui->blcBalanceLabel->setText(customerBalance+"€");
     ui->stackedWidget->setCurrentIndex(2);    
 }
 
@@ -180,10 +181,10 @@ void MainMenu::on_mainTransactionButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
-    emit transactions(customerCardID,"0");
+    emit transactions(customerCardID,0);
     ui->trcNameLabel->setText(customerName);
     ui->trcAccountLabel->setText(customerAccountNumber);
-    ui->trcBalanceLabel->setText(customerBalance);
+    ui->trcBalanceLabel->setText(customerBalance+"€");
     ui->stackedWidget->setCurrentIndex(3);    
 }
 
@@ -193,7 +194,7 @@ void MainMenu::on_mainTransferButton_clicked()
     mainMenuTimer->start();
     ui->trfNameLabel->setText(customerName);
     ui->trfAccountNumLabel->setText(customerAccountNumber);
-    ui->trfBalanceLabel->setText(customerBalance);
+    ui->trfBalanceLabel->setText(customerBalance+"€");
     ui->stackedWidget->setCurrentIndex(4);    
 }
 
@@ -209,38 +210,39 @@ void MainMenu::on_mainLogoutButton_clicked()
 
 void MainMenu::on_wtdrButton20_clicked()
 {
+    qDebug() << "Customer ID: " << customerID;
     mainMenuTimer->stop();
-    emit withdraw(3, 20);
+    emit withdraw(customerID, 20);
 }
 
 void MainMenu::on_wtdrButton40_clicked()
 {
     mainMenuTimer->stop();
-    emit withdraw(3, 40);
+    emit withdraw(customerID, 40);
 }
 
 void MainMenu::on_wtdrButton60_clicked()
 {
     mainMenuTimer->stop();
-    emit withdraw(3, 60);
+    emit withdraw(customerID, 60);
 }
 
 void MainMenu::on_wtdrButton100_clicked()
 {
     mainMenuTimer->stop();
-    emit withdraw(3, 100);
+    emit withdraw(customerID, 100);
 }
 
 void MainMenu::on_wtdrButton200_clicked()
 {
     mainMenuTimer->stop();
-    emit withdraw(3, 200);
+    emit withdraw(customerID, 200);
 }
 
 void MainMenu::on_wtdrButton500_clicked()
 {
     mainMenuTimer->stop();
-    emit withdraw(3, 500);
+    emit withdraw(customerID, 500);
 }
 
 void MainMenu::on_wtdrButtonOther_clicked()
@@ -272,8 +274,8 @@ void MainMenu::on_blcCloseButton_clicked()
 void MainMenu::on_trcNextButton_clicked()   //10 tilitapahtumaa eteenpäin
 {
     startingPoint += 10;
-    QString sPoint = QString::number(startingPoint);
-    emit transactions(customerCardID, sPoint);
+    //QString sPoint = QString::number(startingPoint);
+    emit transactions(customerCardID, startingPoint);
     resetTimer();
 }
 
@@ -283,8 +285,8 @@ void MainMenu::on_trcPreviousButton_clicked()   //10 tilitapahtumaa taaksepäin
     {
         startingPoint -= 10;
     }
-    QString sPoint = QString::number(startingPoint);
-    emit transactions(customerCardID, sPoint);
+    //QString sPoint = QString::number(startingPoint);
+    emit transactions(customerCardID, startingPoint);
     resetTimer();
 }
 
@@ -312,7 +314,7 @@ void MainMenu::on_trfNextButton_clicked()
     confirmation.exec();
     if(confirmation.clickedButton() == pButtonYes)
     {
-        emit transfer(3, transferAccount, transferAmount);
+        emit transfer(customerID, transferAccount, transferAmount);
     }
     else
     {
@@ -422,7 +424,7 @@ void MainMenu::on_otherNextButton_clicked()
     }
     else
     {
-        emit withdraw(3, wtdrOtherAmount);
+        emit withdraw(customerID, wtdrOtherAmount);
     }
 }
 
@@ -606,7 +608,7 @@ void MainMenu::on_amountInsertClearButton_clicked()
 
 void MainMenu::on_amountInsertNextButton_clicked()
 {
-    ui->trfAmountLineEdit->setText(trfAmount);
+    ui->trfAmountLineEdit->setText(trfAmount+"€");
     ui->stackedWidget->setCurrentIndex(4);
     resetTimer();
 }

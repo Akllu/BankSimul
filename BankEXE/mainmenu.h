@@ -24,7 +24,7 @@ public:
     void resetTimer();
     void startHomeWindowTimer();
     void saveID(QString cardID);
-    void setCustomerData(QString name, QString accNum, QString balance);
+    void setCustomerData(QString nameID, QString name, QString accNum, QString balance);
     void setTransactions(QString event, QString amount, QString date);
 
 public slots:
@@ -37,7 +37,7 @@ signals:
     void withdraw(int,double);
     void transfer(int,int,double);
     void updateCustomerData(QString);
-    void transactions(QString,QString);
+    void transactions(QString,int);
 
 private slots:
     void on_mainWithdrawButton_clicked();   //Päävalikko
@@ -122,6 +122,7 @@ private:
     QTimer *homeWindowTimer;    //30s ajastin
     QMessageBox *failMessage;   //Ilmoitus jos saldo ei riitä
 
+    int customerID;     //Käyttäjän ID-numero
     int transferCommaCounter;    //Laskuri tilisiirron pilkkuja varten
     int startingPoint;
 };
