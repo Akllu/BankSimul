@@ -1,12 +1,12 @@
-#include "engine.h"
+#include "dllengine.h"
 
-Engine::Engine(QObject *parent) :
+dllengine::dllengine(QObject *parent) :
     QObject(parent)
 {
 
 }
 
-Engine::~Engine()
+dllengine::~dllengine()
 {
 
 }
@@ -14,7 +14,7 @@ Engine::~Engine()
 
 /***************KIRJAUTUMINEN***************/
 
-void Engine::returnLoginResult(QString cardID, QString PINCode)
+void dllengine::returnLoginResult(QString cardID, QString PINCode)
 {
     QJsonObject json_obj;
     json_obj.insert("Tunnus_kortti",cardID);
@@ -32,7 +32,7 @@ void Engine::returnLoginResult(QString cardID, QString PINCode)
     loginReply = loginManager->post(request, QJsonDocument(json_obj).toJson());
 }
 
-void Engine::loginSlot(QNetworkReply *reply)
+void dllengine::loginSlot(QNetworkReply *reply)
 {
     QByteArray response_data = reply->readAll();
     if(response_data.compare("true") == 0)
@@ -60,7 +60,7 @@ void Engine::loginSlot(QNetworkReply *reply)
 
 /***************KORTIN LUKITUS***************/
 
-void Engine::lockCard(QString cardID)
+void dllengine::lockCard(QString cardID)
 {
     QJsonObject json_obj;
     json_obj.insert("Tunnus_kortti", cardID);
@@ -78,7 +78,7 @@ void Engine::lockCard(QString cardID)
     cardLockReply = cardLockManager->put(request, QJsonDocument(json_obj).toJson());
 }
 
-void Engine::cardLockSlot(QNetworkReply *reply)
+void dllengine::cardLockSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     if(response_data.compare("0") == 0)
@@ -102,7 +102,7 @@ void Engine::cardLockSlot(QNetworkReply *reply)
 
 /***************ASIAKKAAN TIEDOT***************/
 
-void Engine::getCustomerData(QString cardID)
+void dllengine::getCustomerData(QString cardID)
 {
     QString site_url="http://localhost:3000/saldo/saldo/"+cardID;
     QString credentials="pankki:p1234";
@@ -117,7 +117,7 @@ void Engine::getCustomerData(QString cardID)
     customerReply = customerManager->get(request);
 }
 
-void Engine::customerSlot(QNetworkReply *reply)
+void dllengine::customerSlot(QNetworkReply *reply)
 {
     QByteArray response_data = reply->readAll();
     if(response_data.compare("") == 0)
@@ -132,17 +132,20 @@ void Engine::customerSlot(QNetworkReply *reply)
     {
         QJsonDocument json_doc=QJsonDocument::fromJson(response_data);
         QJsonArray json_array = json_doc.array();
+        QString nameID;
         QString name;
         QString accNum;
         QString balance;
+        QJsonObject json_obj;
         foreach(const QJsonValue &value,json_array)
         {
-            QJsonObject json_obj = value.toObject();
+            json_obj = value.toObject();
             name += json_obj["nimi"].toString()+"\r\n";
             accNum += json_obj["Tilinumero"].toString()+"\r\n";
             balance = QString::number(json_obj["Tilin_saldo"].toDouble());
         }
-        emit returnCustomerData(name,accNum,balance);
+        nameID += QString::number(json_obj["id_Asiakas"].toInt());
+        emit returnCustomerData(nameID,name,accNum,balance);
     }
 
     customerReply->deleteLater();
@@ -153,8 +156,10 @@ void Engine::customerSlot(QNetworkReply *reply)
 
 /***************TILITAPAHTUMAT***************/
 
-void Engine::getTransactions(QString cardID, QString startingPoint)
+void dllengine::getTransactions(QString cardID, int startingPoint)
 {
+    qDebug() << "Kortin ID: " << cardID;
+    qDebug() << "Startingpoint: " << startingPoint;
     QString site_url="http://localhost:3000/saldo/tapahtumat/"+cardID+"/"+startingPoint;
     QString credentials="pankki:p1234";
     QNetworkRequest request((site_url));
@@ -168,7 +173,7 @@ void Engine::getTransactions(QString cardID, QString startingPoint)
     transactionReply = transactionManager->get(request);
 }
 
-void Engine::transactionsSlot(QNetworkReply *reply)
+void dllengine::transactionsSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     if(response_data.compare("0") == 0)
@@ -204,8 +209,10 @@ void Engine::transactionsSlot(QNetworkReply *reply)
 
 /***************NOSTA RAHAA***************/
 
-void Engine::withdraw(int cardID, double amount)
+void dllengine::withdraw(int cardID, double amount)
 {
+    qDebug() << "Kortin ID: " << cardID;
+    qDebug() << "Summa: " << amount;
     QJsonObject json_obj;
     json_obj.insert("id", cardID);
     json_obj.insert("summa", amount);
@@ -222,7 +229,7 @@ void Engine::withdraw(int cardID, double amount)
     withdrawReply = withdrawManager->post(request, QJsonDocument(json_obj).toJson());
 }
 
-void Engine::withdrawSlot(QNetworkReply *reply)
+void dllengine::withdrawSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     qDebug() << response_data;
@@ -238,7 +245,6 @@ void Engine::withdrawSlot(QNetworkReply *reply)
     }
     else
     {
-        qDebug() << "nosto onnistui";
         emit returnWithdrawResult("true");
     }
 
@@ -250,7 +256,7 @@ void Engine::withdrawSlot(QNetworkReply *reply)
 
 /***************TILISIIRTO***************/
 
-void Engine::transfer(int senderAccNum, int receiverAccNum, double amount)
+void dllengine::transfer(int senderAccNum, int receiverAccNum, double amount)
 {
     qDebug() << "Lähettäjän tilinro = " << senderAccNum;
     qDebug() << "Vastaanottajan tilinro = " << receiverAccNum;
@@ -272,7 +278,7 @@ void Engine::transfer(int senderAccNum, int receiverAccNum, double amount)
     transferReply = transferManager->post(request, QJsonDocument(json_obj).toJson());
 }
 
-void Engine::transferSlot(QNetworkReply *reply)
+void dllengine::transferSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     qDebug() << "Response data = " << response_data;
@@ -288,7 +294,6 @@ void Engine::transferSlot(QNetworkReply *reply)
     }
     else
     {
-        qDebug() << "siirto onnistui";
         emit returnTransferResult("true");
     }
 

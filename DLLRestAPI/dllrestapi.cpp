@@ -2,13 +2,13 @@
 
 DLLRestAPI::DLLRestAPI()
 {
-    ptrEngine = new Engine;
+    ptrEngine = new dllengine;
 
     connect(ptrEngine, SIGNAL(returnLoginResult(QString)),  //Yhdistetään enginen signaalit slotteihin
             this, SLOT(sendLoginResult(QString)));
 
-    connect(ptrEngine, SIGNAL(returnCustomerData(QString,QString,QString)),
-            this, SLOT(sendCustomerDataResult(QString,QString,QString)));
+    connect(ptrEngine, SIGNAL(returnCustomerData(QString,QString,QString,QString)),
+            this, SLOT(sendCustomerDataResult(QString,QString,QString,QString)));
 
     connect(ptrEngine, SIGNAL(returnTransactions(QString,QString,QString)),
             this, SLOT(sendTransactionResult(QString,QString,QString)));
@@ -41,7 +41,7 @@ void DLLRestAPI::getCustomerData(QString cardID)
     ptrEngine->getCustomerData(cardID);
 }
 
-void DLLRestAPI::getTransactions(QString cardID, QString startingPoint)
+void DLLRestAPI::getTransactions(QString cardID, int startingPoint)
 {
     ptrEngine->getTransactions(cardID,startingPoint);
 }
@@ -64,9 +64,9 @@ void DLLRestAPI::sendLoginResult(QString result)
     emit loginResultToEXE(result);
 }
 
-void DLLRestAPI::sendCustomerDataResult(QString name, QString accNum, QString balance)
+void DLLRestAPI::sendCustomerDataResult(QString nameID, QString name, QString accNum, QString balance)
 {
-    emit customerDataToEXE(name,accNum,balance);
+    emit customerDataToEXE(nameID,name,accNum,balance);
 }
 
 void DLLRestAPI::sendTransactionResult(QString event, QString amount, QString date)

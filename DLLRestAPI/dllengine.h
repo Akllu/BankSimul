@@ -1,27 +1,27 @@
-#ifndef ENGINE_H
-#define ENGINE_H
+#ifndef DLLENGINE_H
+#define DLLENGINE_H
 
 #include <QObject>
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 
-class Engine : public QObject
+class dllengine : public QObject
 {
     Q_OBJECT
 public:
-    Engine(QObject *parent = nullptr);
-    ~Engine();
+    dllengine(QObject *parent = nullptr);
+    ~dllengine();
     void returnLoginResult(QString cardID, QString PINCode);
     void lockCard(QString cardID);
     void getCustomerData(QString cardID);
-    void getTransactions(QString cardID, QString startingPoint);
+    void getTransactions(QString cardID, int startingPoint);
     void withdraw(int cardID, double amount);
     void transfer(int senderAccNum, int receiverAccNum, double amount);
 
 signals:
     void returnLoginResult(QString);
-    void returnCustomerData(QString,QString,QString);
+    void returnCustomerData(QString,QString,QString,QString);
     void returnTransactions(QString,QString,QString);
     void returnWithdrawResult(QString);
     void returnTransferResult(QString);
@@ -48,5 +48,4 @@ private:
     QNetworkAccessManager *transferManager;
     QNetworkReply *transferReply;
 };
-
-#endif // ENGINE_H
+#endif // DLLENGINE_H
