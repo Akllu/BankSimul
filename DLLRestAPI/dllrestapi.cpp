@@ -41,7 +41,7 @@ void DLLRestAPI::getCustomerData(QString cardID)
     ptrEngine->getCustomerData(cardID);
 }
 
-void DLLRestAPI::getTransactions(QString cardID, int startingPoint)
+void DLLRestAPI::getTransactions(QString cardID, QString startingPoint)
 {
     ptrEngine->getTransactions(cardID,startingPoint);
 }

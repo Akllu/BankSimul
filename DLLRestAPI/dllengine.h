@@ -15,7 +15,7 @@ public:
     void returnLoginResult(QString cardID, QString PINCode);
     void lockCard(QString cardID);
     void getCustomerData(QString cardID);
-    void getTransactions(QString cardID, int startingPoint);
+    void getTransactions(QString cardID, QString startingPoint);
     void withdraw(int cardID, double amount);
     void transfer(int senderAccNum, int receiverAccNum, double amount);
 
