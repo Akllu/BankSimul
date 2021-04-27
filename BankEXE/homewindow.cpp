@@ -25,10 +25,10 @@ HomeWindow::HomeWindow(QWidget *parent)
 
 /***************RAJAPINTAFUNKTIOT***************/
 
-    connect(this, SIGNAL(readRFID()),       //DLLSerialPort
+    /*connect(this, SIGNAL(readRFID()),       //DLLSerialPort
             this, SLOT(getValueFromRFID()));
     connect(ptrSerialPort, SIGNAL(sendtoEXEStatus(QString)),
-            this, SLOT(dataFromRFID(QString)));
+            this, SLOT(dataFromRFID(QString)));*/
 
     connect(ptrPIN, SIGNAL(timeoutSignal()),       //DLLPinCode
             this, SLOT(getValueFromRFID()));
@@ -43,8 +43,8 @@ HomeWindow::HomeWindow(QWidget *parent)
     connect(ptrMainMenu, SIGNAL(updateCustomerData(QString)),
             this, SLOT(getCustomerData(QString)));
 
-    connect(ptrMainMenu, SIGNAL(transactions(QString,int)),     //Tilitapahtumien haku
-            this, SLOT(getTransactions(QString,int)));
+    connect(ptrMainMenu, SIGNAL(transactions(QString,QString)),     //Tilitapahtumien haku
+            this, SLOT(getTransactions(QString,QString)));
     connect(ptrRestAPI, SIGNAL(transactionsToEXE(QString,QString,QString)),
             this, SLOT(handleTransactions(QString,QString,QString)));
 
@@ -94,7 +94,7 @@ void HomeWindow::login()
 
 void HomeWindow::on_pushButton_clicked()    //Tämä on vain EXE:n demoa varten
 {
-   dataFromRFID("-06000DE540");
+   dataFromRFID("-06000E1B4D");
 
    // ui->stackedWidget->setCurrentIndex(1);  //Näytetään pääkäyttöliittymä
    // ptrMainMenu->startHomeWindowTimer();
@@ -118,11 +118,11 @@ void HomeWindow::loginResult(QString result)
         ptrMainMenu->startHomeWindowTimer();
         loginCounter = 0;
     }
-    else if(result == "virhe")
+    else if(result == "error")
     {
         QMessageBox::warning(this, "Virheilmoitus", "Virhe tietokantayhteydessä!");
     }
-    else if(result == "lukossa")
+    else if(result == "locked")
     {
         QMessageBox::warning(this, "Virheilmoitus", "Kortti on lukittuna!");
     }
@@ -148,7 +148,7 @@ void HomeWindow::getCustomerData(QString cardID)
     ptrMainMenu->saveID(cardID);
 }
 
-void HomeWindow::getTransactions(QString cardID, int startingPoint)
+void HomeWindow::getTransactions(QString cardID, QString startingPoint)
 {
     ptrRestAPI->getTransactions(cardID,startingPoint);
 }

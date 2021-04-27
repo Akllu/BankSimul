@@ -170,7 +170,7 @@ void MainMenu::on_mainBalanceButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
-    emit transactions(customerCardID,0);
+    emit transactions(customerCardID,"0");
     ui->blcNameLabel->setText(customerName);
     ui->blcAccountLabel->setText(customerAccountNumber);
     ui->blcBalanceLabel->setText(customerBalance+"€");
@@ -181,7 +181,7 @@ void MainMenu::on_mainTransactionButton_clicked()
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
-    emit transactions(customerCardID,0);
+    emit transactions(customerCardID,"0");
     ui->trcNameLabel->setText(customerName);
     ui->trcAccountLabel->setText(customerAccountNumber);
     ui->trcBalanceLabel->setText(customerBalance+"€");
@@ -274,8 +274,8 @@ void MainMenu::on_blcCloseButton_clicked()
 void MainMenu::on_trcNextButton_clicked()   //10 tilitapahtumaa eteenpäin
 {
     startingPoint += 10;
-    //QString sPoint = QString::number(startingPoint);
-    emit transactions(customerCardID, startingPoint);
+    QString sPoint = QString::number(startingPoint);
+    emit transactions(customerCardID, sPoint);
     resetTimer();
 }
 
@@ -285,8 +285,8 @@ void MainMenu::on_trcPreviousButton_clicked()   //10 tilitapahtumaa taaksepäin
     {
         startingPoint -= 10;
     }
-    //QString sPoint = QString::number(startingPoint);
-    emit transactions(customerCardID, startingPoint);
+    QString sPoint = QString::number(startingPoint);
+    emit transactions(customerCardID, sPoint);
     resetTimer();
 }
 

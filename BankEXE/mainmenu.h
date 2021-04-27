@@ -37,7 +37,7 @@ signals:
     void withdraw(int,double);
     void transfer(int,int,double);
     void updateCustomerData(QString);
-    void transactions(QString,int);
+    void transactions(QString,QString);
 
 private slots:
     void on_mainWithdrawButton_clicked();   //Päävalikko
