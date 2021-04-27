@@ -34,7 +34,7 @@ public slots:
     void getTransactions(QString cardID, QString startingPoint);
 
 signals:
-    //void readRFID();
+    void readRFID();
 
 private slots:
     void on_pushButton_clicked();

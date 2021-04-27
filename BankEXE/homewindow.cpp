@@ -6,6 +6,7 @@ HomeWindow::HomeWindow(QWidget *parent)
     , ui(new Ui::HomeWindow)
 {
     ui->setupUi(this);
+    ui->pushButton->hide();
     setWindowTitle("BankSimul");
     loginCounter = 0;
 
@@ -25,10 +26,10 @@ HomeWindow::HomeWindow(QWidget *parent)
 
 /***************RAJAPINTAFUNKTIOT***************/
 
-    /*connect(this, SIGNAL(readRFID()),       //DLLSerialPort
+    connect(this, SIGNAL(readRFID()),       //DLLSerialPort
             this, SLOT(getValueFromRFID()));
     connect(ptrSerialPort, SIGNAL(sendtoEXEStatus(QString)),
-            this, SLOT(dataFromRFID(QString)));*/
+            this, SLOT(dataFromRFID(QString)));
 
     connect(ptrPIN, SIGNAL(timeoutSignal()),       //DLLPinCode
             this, SLOT(getValueFromRFID()));
@@ -83,7 +84,7 @@ void HomeWindow::dataFromRFID(QString data)
 {
     cardNum = data;
     ptrPIN->generatePinDialog();
-    //ptrSerialPort->closeSerialdata();
+    ptrSerialPort->closeSerialdata();
 }
 
 void HomeWindow::login()
@@ -94,23 +95,17 @@ void HomeWindow::login()
 
 void HomeWindow::on_pushButton_clicked()    //Tämä on vain EXE:n demoa varten
 {
-   dataFromRFID("-06000E1B4D");
-
-   // ui->stackedWidget->setCurrentIndex(1);  //Näytetään pääkäyttöliittymä
-   // ptrMainMenu->startHomeWindowTimer();
+   //dataFromRFID("-06000E1B4D");
 }
 
 void HomeWindow::backToHome()
 {
     ui->stackedWidget->setCurrentIndex(0);  //Näytetään aloituskäyttöliittymä
-    //getValueFromRFID(); //Luetaan sarjaporttia uudelleen
+    getValueFromRFID(); //Luetaan sarjaporttia uudelleen
 }
-
-
 
 void HomeWindow::loginResult(QString result)
 {
-    qDebug() << result;
     if(result == "loginsuccesful")
     {
         getCustomerData(cardNum);
@@ -121,10 +116,12 @@ void HomeWindow::loginResult(QString result)
     else if(result == "error")
     {
         QMessageBox::warning(this, "Virheilmoitus", "Virhe tietokantayhteydessä!");
+        getValueFromRFID();
     }
     else if(result == "locked")
     {
         QMessageBox::warning(this, "Virheilmoitus", "Kortti on lukittuna!");
+        getValueFromRFID();
     }
     else
     {
@@ -138,6 +135,8 @@ void HomeWindow::loginResult(QString result)
         {
             QMessageBox::warning(this, "Virheilmoitus", "PIN-koodi syötetty väärin liian monta kertaa! Kortti lukittu!");
             ptrRestAPI->lockCard(cardNum);
+            loginCounter = 0;
+            getValueFromRFID();
         }
     }
 }
