@@ -3,7 +3,7 @@ const database = require('../database');
 global.paivays=0;
 const saldo= {
     getSaldo: function(id,callback){
-        return database.query('select nimi, osoite, puhelinnumero, Tilinumero, Tilin_saldo from Asiakas join Asiakas_tili on Asiakas.id_Asiakas=Asiakas_tili.id_Asiakas join Tili on Asiakas_tili.id_tili=Tili.id_tili where kortin_tunnus=?',[id], callback);
+        return database.query('select asiakas.id_Asiakas, nimi, osoite, puhelinnumero, Tilinumero, Tilin_saldo from Asiakas join Asiakas_tili on Asiakas.id_Asiakas=Asiakas_tili.id_Asiakas join Tili on Asiakas_tili.id_tili=Tili.id_tili where kortin_tunnus=?',[id], callback);
 
     },
     getTilitiedot: function(id, callback){
@@ -12,9 +12,9 @@ const saldo= {
     getKortintiedot: function(id, callback){
         return database.query('select id_kortti, Pin_koodi from kortti where id_kortti=?',[id], callback);
     },
-    getTapahtumat: function(cardID, callback){
-        const limitToInt = parseInt(request.params.startingPoint);
-        return database.query('select Tapahtuma_tyyppi, Rahan_maara, @paivays:=Paivays as tapahtuma from Asiakas join Asiakas_tili on Asiakas.id_Asiakas=Asiakas_tili.id_Asiakas join Tili on Asiakas_tili.id_tili=Tili.id_tili join tapahtuma on Tili.id_tili=tapahtuma.id_tili where kortin_tunnus=? order by Paivays desc limit ?,10',[cardID,limitToInt], callback);
+    getTapahtumat: function(cardID,limited, callback){
+        
+        return database.query('select Tapahtuma_tyyppi, Rahan_maara, @paivays:=Paivays as tapahtuma from Asiakas join Asiakas_tili on Asiakas.id_Asiakas=Asiakas_tili.id_Asiakas join Tili on Asiakas_tili.id_tili=Tili.id_tili join tapahtuma on Tili.id_tili=tapahtuma.id_tili where kortin_tunnus=? order by Paivays desc limit ?,10',[cardID,limited], callback);
     },
     getNimi: function(id, callback){
         return database.query('select nimi from asiakas where kortin_tunnus=?',[id],callback);

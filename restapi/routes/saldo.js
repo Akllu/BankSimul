@@ -1,3 +1,4 @@
+const { request } = require('express');
 const express = require('express');
 const router = express.Router();
 const saldo = require('../models/saldo_model');
@@ -28,11 +29,13 @@ router.get('/nimi/:id',
     })
 }
 );
-router.get('/tapahtumat/:cardID/:startingPoint',
+router.get('/tapahtumat/:cardID&:startingPoint',
     function(request, response){
-    saldo.getTapahtumat(request.params.cardID,request.params.startingPoint, function(err,dbResult){
+        const limited = parseInt(startingPoint);
+    saldo.getTapahtumat(request.params.cardID,limited, function(err,dbResult){
         if(err){
             response.json(err.errno);
+            
         }
         else{
             console.log(dbResult);
