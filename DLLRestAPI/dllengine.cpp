@@ -14,7 +14,7 @@ dllengine::~dllengine()
 
 /***************KIRJAUTUMINEN***************/
 
-void dllengine::returnLoginResult(QString cardID, QString PINCode)
+void dllengine::getLoginResult(QString cardID, QString PINCode)
 {
     QJsonObject json_obj;
     json_obj.insert("Tunnus_kortti",cardID);
@@ -190,9 +190,9 @@ void dllengine::transactionsSlot(QNetworkReply *reply)
     foreach(const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
-        event += json_obj["Tapahtuma_tyyppi"].toString()+"\r\n\n";
-        amount += QString::number(json_obj["Rahan_maara"].toDouble())+"€"+"\r\n\n";
-        date += json_obj["tapahtuma"].toString()+"\r\n\n";
+        event += json_obj["Tapahtuma_tyyppi"].toString()+"\r\n";
+        amount += QString::number(json_obj["Rahan_maara"].toDouble())+"€"+"\r\n";
+        date += json_obj["tapahtuma"].toString()+"\r\n";
     }
     emit returnTransactions(event,amount,date);
 
@@ -249,11 +249,11 @@ void dllengine::withdrawSlot(QNetworkReply *reply)
 
 /***************TILISIIRTO***************/
 
-void dllengine::transfer(int senderAccNum, int receiverAccNum, double amount)
+void dllengine::transfer(int customerID, int receiverAccNum, double amount)
 {
     QJsonObject json_obj;
     json_obj.insert("id", receiverAccNum);
-    json_obj.insert("id2", senderAccNum);
+    json_obj.insert("id2", customerID);
     json_obj.insert("summa", amount);
     QString site_url="http://localhost:3000/saldo/siirto";
     QString credentials="pankki:p1234";

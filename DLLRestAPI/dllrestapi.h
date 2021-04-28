@@ -19,7 +19,7 @@ public:
     void getCustomerData(QString cardID);       //Käyttäjän tietojen hakeminen
     void getTransactions(QString cardID, QString startingPoint); //Tilitietojen hakeminen
     void withdraw(int cardID, double amount);   //Nosta rahaa
-    void transfer(int senderAccNum, int receiverAccNum, double amount); //Tilisiirto
+    void transfer(int customerID, int receiverAccNum, double amount); //Tilisiirto
 
 signals:
     void loginResultToEXE(QString);             //EXE:lle lähetettävät signaalit

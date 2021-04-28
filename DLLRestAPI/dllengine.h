@@ -12,12 +12,12 @@ class dllengine : public QObject
 public:
     dllengine(QObject *parent = nullptr);
     ~dllengine();
-    void returnLoginResult(QString cardID, QString PINCode);
+    void getLoginResult(QString cardID, QString PINCode);
     void lockCard(QString cardID);
     void getCustomerData(QString cardID);
     void getTransactions(QString cardID, QString startingPoint);
     void withdraw(int cardID, double amount);
-    void transfer(int senderAccNum, int receiverAccNum, double amount);
+    void transfer(int customerID, int receiverAccNum, double amount);
 
 signals:
     void returnLoginResult(QString);

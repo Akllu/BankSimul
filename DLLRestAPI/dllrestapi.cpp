@@ -28,7 +28,7 @@ DLLRestAPI::~DLLRestAPI()
 
 void DLLRestAPI::login(QString cardID, QString PINCode)
 {
-    ptrEngine->returnLoginResult(cardID, PINCode);
+    ptrEngine->getLoginResult(cardID, PINCode);
 }
 
 void DLLRestAPI::lockCard(QString cardID)
@@ -51,9 +51,9 @@ void DLLRestAPI::withdraw(int cardID, double amount)
     ptrEngine->withdraw(cardID, amount);
 }
 
-void DLLRestAPI::transfer(int senderAccNum, int receiverAccNum, double amount)
+void DLLRestAPI::transfer(int customerID, int receiverAccNum, double amount)
 {
-    ptrEngine->transfer(senderAccNum, receiverAccNum, amount);
+    ptrEngine->transfer(customerID, receiverAccNum, amount);
 }
 
 
