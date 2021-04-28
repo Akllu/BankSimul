@@ -38,10 +38,10 @@ signals:
 
 private slots:
     void on_pushButton_clicked();
-    void handleWithdraw(int ID, double amount);
-    void handleTransfer(int senderAccNum, int receiverAccNum, double amount);
     void handleCustomerData(QString nameID, QString name, QString accNum, QString balance);
     void handleTransactions(QString event, QString amount, QString date);
+    void handleWithdraw(int ID, double amount);
+    void handleTransfer(int customerID, int receiverAccNum, double amount);
 
 private:
     Ui::HomeWindow *ui;

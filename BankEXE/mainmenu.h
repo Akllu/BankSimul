@@ -34,10 +34,10 @@ public slots:
 
 signals:
     void logoutSignal();
-    void withdraw(int,double);
-    void transfer(int,int,double);
     void updateCustomerData(QString);
     void transactions(QString,QString);
+    void withdraw(int,double);
+    void transfer(int,int,double);
 
 private slots:
     void on_mainWithdrawButton_clicked();   //Päävalikko

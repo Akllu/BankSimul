@@ -42,7 +42,7 @@ MainMenu::~MainMenu()
     homeWindowTimer = nullptr;
 }
 
-void MainMenu::insertOtherAmountNum(QString i)
+void MainMenu::insertOtherAmountNum(QString i)  //Lisätään painetut numerot nostettavaan summaan
 {
     wtdrAmount.append(i);
     ui->otherAmountLineEdit->setText(wtdrAmount);
@@ -60,24 +60,25 @@ void MainMenu::insertAmountNum(QString i)   //Lisätään painetut numerot siirr
     ui->amountInsertLineEdit->setText(trfAmount);
 }
 
-void MainMenu::resetTimer()
+void MainMenu::resetTimer() //"Nollataan" ajastin
 {
     mainMenuTimer->stop();
     mainMenuTimer->start();
 }
 
-void MainMenu::startHomeWindowTimer()
+void MainMenu::startHomeWindowTimer()   //Käynnistetään 30s ajastin
 {
     homeWindowTimer->start();
 }
 
-void MainMenu::saveID(QString cardID)
+void MainMenu::saveID(QString cardID)   //Tallennetaan kortin sarjanumero
 {
     customerCardID = cardID;
 }
 
 void MainMenu::setCustomerData(QString nameID, QString name, QString accNum, QString balance)
 {
+    //Asetetaan käyttäjän tiedot näkyviin käyttöliittymiin
     customerID = nameID.toInt();
     customerName = name;
     customerAccountNumber = accNum;
@@ -87,6 +88,7 @@ void MainMenu::setCustomerData(QString nameID, QString name, QString accNum, QSt
 
 void MainMenu::setTransactions(QString event, QString amount, QString date)
 {
+    //Asetetaan käyttäjän tilitapahtumat näkyviin käyttöliittymiin
     ui->blcEventLabel->setText(event);
     ui->blcAmountLabel->setText(amount);
     ui->blcDateLabel->setText(date);
@@ -97,7 +99,8 @@ void MainMenu::setTransactions(QString event, QString amount, QString date)
 
 void MainMenu::backToMainMenu()
 {
-    ui->stackedWidget->setCurrentIndex(0);  //Palataan pääkäyttöliittymään ja nollataan mahdollisesti syötetyt tiedot
+    //Palataan pääkäyttöliittymään ja nollataan mahdollisesti syötetyt tiedot
+    ui->stackedWidget->setCurrentIndex(0);
     ui->otherAmountLineEdit->clear();
     ui->trfAccNumLineEdit->clear();
     ui->trfAmountLineEdit->clear();
@@ -118,13 +121,13 @@ void MainMenu::withdrawResult(QString result)
         mainMenuTimer->start();
         on_otherClearButton_clicked();
     }
-    else if(result == "error")
+    else if(result == "error")  //Jos tietokantaan ei saada yhteyttä
     {
         QMessageBox::warning(this, "Virhe", "Virhe tietokantayhteydessä!");
         mainMenuTimer->start();
         on_otherClearButton_clicked();
     }
-    else
+    else    //Nosto onnistui, ilmoitetaan käyttäjälle ja kirjaudutaan ulos
     {
         QMessageBox::information(this, "Onnistunut nosto", "Haluamasi summan nosto onnistui! Kirjaudutaan ulos..");
         ui->stackedWidget->setCurrentIndex(0);
@@ -141,12 +144,12 @@ void MainMenu::transferResult(QString result)
         QTimer::singleShot(10000, failMessage, SLOT(close()));
         mainMenuTimer->start();
     }
-    else if(result == "error")
+    else if(result == "error")  //Jos tietokantaan ei saada yhteyttä
     {
         QMessageBox::warning(this, "Virhe", "Virhe tietokantayhteydessä!");
         mainMenuTimer->start();
     }
-    else
+    else    //Tilisiirto onnistui, ilmoitetaan käyttäjälle, päivitetään tiedot ja palataan pääkäyttöliittymään
     {
         QMessageBox::information(this, "Onnistunut siirto", "Tilisiirto onnistui!");
         on_trfCloseButton_clicked();
@@ -157,7 +160,7 @@ void MainMenu::transferResult(QString result)
 
 /***************PÄÄVALIKKO***************/
 
-void MainMenu::on_mainWithdrawButton_clicked()
+void MainMenu::on_mainWithdrawButton_clicked()  //Painetaan Nosta rahaa-painiketta
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
@@ -166,7 +169,7 @@ void MainMenu::on_mainWithdrawButton_clicked()
     ui->stackedWidget->setCurrentIndex(1);    
 }
 
-void MainMenu::on_mainBalanceButton_clicked()
+void MainMenu::on_mainBalanceButton_clicked()   //Painetaan Näytä saldo-painiketta
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
@@ -177,7 +180,7 @@ void MainMenu::on_mainBalanceButton_clicked()
     ui->stackedWidget->setCurrentIndex(2);    
 }
 
-void MainMenu::on_mainTransactionButton_clicked()
+void MainMenu::on_mainTransactionButton_clicked()   //Painetaan Selaa tilitapahtumia-painiketta
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
@@ -188,7 +191,7 @@ void MainMenu::on_mainTransactionButton_clicked()
     ui->stackedWidget->setCurrentIndex(3);    
 }
 
-void MainMenu::on_mainTransferButton_clicked()
+void MainMenu::on_mainTransferButton_clicked()  //Painetaan Tilisiirto-painiketta
 {
     homeWindowTimer->stop();
     mainMenuTimer->start();
@@ -198,7 +201,7 @@ void MainMenu::on_mainTransferButton_clicked()
     ui->stackedWidget->setCurrentIndex(4);    
 }
 
-void MainMenu::on_mainLogoutButton_clicked()
+void MainMenu::on_mainLogoutButton_clicked()    //Painetaan Kirjaudu ulos-painiketta
 {
     homeWindowTimer->stop();
     customerName = "";
@@ -208,7 +211,7 @@ void MainMenu::on_mainLogoutButton_clicked()
 
 /***************NOSTA RAHAA***************/
 
-void MainMenu::on_wtdrButton20_clicked()
+void MainMenu::on_wtdrButton20_clicked()    //Nostetaan käyttäjän haluama summa
 {
     qDebug() << "Customer ID: " << customerID;
     mainMenuTimer->stop();
