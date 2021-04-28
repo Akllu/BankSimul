@@ -117,7 +117,7 @@ CREATE TABLE `tapahtuma` (
   PRIMARY KEY (`id_tapahtuma`),
   KEY `fk_tapahtuma_Tili1_idx` (`id_Tili`),
   CONSTRAINT `fk_tapahtuma_Tili1` FOREIGN KEY (`id_Tili`) REFERENCES `tili` (`id_Tili`)
-) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `tapahtuma` (
 
 LOCK TABLES `tapahtuma` WRITE;
 /*!40000 ALTER TABLE `tapahtuma` DISABLE KEYS */;
-INSERT INTO `tapahtuma` VALUES (167,'otto',20,'2021-04-27 08:52:51',2,NULL),(168,'otto',40,'2021-04-27 08:53:01',2,NULL),(169,'otto',60,'2021-04-27 08:53:09',2,NULL),(170,'otto',100,'2021-04-27 08:53:14',2,NULL),(171,'otto',200,'2021-04-27 08:53:19',2,NULL),(172,'otto',500,'2021-04-27 08:53:23',2,NULL),(173,'otto',600,'2021-04-27 08:53:30',2,NULL),(174,'pano',1100.75,'2021-04-27 08:54:41',3,NULL),(175,'otto',1100.75,'2021-04-27 08:54:41',2,NULL),(176,'pano',419.25,'2021-04-27 08:55:09',3,NULL),(177,'otto',419.25,'2021-04-27 08:55:09',2,NULL),(178,'otto',60,'2021-04-27 08:55:33',2,NULL),(179,'otto',500,'2021-04-27 08:56:59',1,NULL),(180,'otto',200,'2021-04-27 08:57:03',1,NULL),(181,'otto',470,'2021-04-27 08:57:24',1,NULL),(182,'pano',4000,'2021-04-27 08:59:33',3,NULL),(183,'otto',4000,'2021-04-27 08:59:33',1,NULL),(184,'pano',520.33,'2021-04-27 08:59:52',3,NULL),(185,'otto',520.33,'2021-04-27 08:59:52',1,NULL),(186,'pano',75.21,'2021-04-27 09:00:11',2,NULL),(187,'otto',75.21,'2021-04-27 09:00:11',1,NULL),(188,'pano',80000,'2021-04-27 09:00:32',3,NULL),(189,'otto',80000,'2021-04-27 09:00:32',1,NULL),(190,'otto',120,'2021-04-27 09:01:44',3,NULL),(191,'pano',30.5,'2021-04-27 09:02:21',2,NULL),(192,'otto',30.5,'2021-04-27 09:02:21',3,NULL),(193,'pano',21,'2021-04-27 09:02:31',1,NULL),(194,'otto',21,'2021-04-27 09:02:31',3,NULL),(195,'pano',110,'2021-04-27 09:02:48',2,NULL),(196,'otto',110,'2021-04-27 09:02:48',3,NULL),(197,'otto',20,'2021-04-27 09:02:53',3,NULL),(198,'pano',45,'2021-04-27 09:03:09',1,NULL),(199,'otto',45,'2021-04-27 09:03:09',3,NULL);
+INSERT INTO `tapahtuma` VALUES (167,'otto',20,'2021-04-27 08:52:51',2,NULL),(168,'otto',40,'2021-04-27 08:53:01',2,NULL),(169,'otto',60,'2021-04-27 08:53:09',2,NULL),(170,'otto',100,'2021-04-27 08:53:14',2,NULL),(171,'otto',200,'2021-04-27 08:53:19',2,NULL),(172,'otto',500,'2021-04-27 08:53:23',2,NULL),(173,'otto',600,'2021-04-27 08:53:30',2,NULL),(174,'pano',1100.75,'2021-04-27 08:54:41',3,NULL),(175,'otto',1100.75,'2021-04-27 08:54:41',2,NULL),(176,'pano',419.25,'2021-04-27 08:55:09',3,NULL),(177,'otto',419.25,'2021-04-27 08:55:09',2,NULL),(178,'otto',60,'2021-04-27 08:55:33',2,NULL),(179,'otto',500,'2021-04-27 08:56:59',1,NULL),(180,'otto',200,'2021-04-27 08:57:03',1,NULL),(181,'otto',470,'2021-04-27 08:57:24',1,NULL),(182,'pano',4000,'2021-04-27 08:59:33',3,NULL),(183,'otto',4000,'2021-04-27 08:59:33',1,NULL),(184,'pano',520.33,'2021-04-27 08:59:52',3,NULL),(185,'otto',520.33,'2021-04-27 08:59:52',1,NULL),(186,'pano',75.21,'2021-04-27 09:00:11',2,NULL),(187,'otto',75.21,'2021-04-27 09:00:11',1,NULL),(188,'pano',80000,'2021-04-27 09:00:32',3,NULL),(189,'otto',80000,'2021-04-27 09:00:32',1,NULL),(190,'otto',120,'2021-04-27 09:01:44',3,NULL),(191,'pano',30.5,'2021-04-27 09:02:21',2,NULL),(192,'otto',30.5,'2021-04-27 09:02:21',3,NULL),(193,'pano',21,'2021-04-27 09:02:31',1,NULL),(194,'otto',21,'2021-04-27 09:02:31',3,NULL),(195,'pano',110,'2021-04-27 09:02:48',2,NULL),(196,'otto',110,'2021-04-27 09:02:48',3,NULL),(197,'otto',20,'2021-04-27 09:02:53',3,NULL),(198,'pano',45,'2021-04-27 09:03:09',1,NULL),(199,'otto',45,'2021-04-27 09:03:09',3,NULL),(200,'otto',20,'2021-04-28 06:11:03',3,NULL),(201,'pano',706.8,'2021-04-28 06:11:43',2,NULL),(202,'otto',706.8,'2021-04-28 06:11:43',3,NULL);
 /*!40000 ALTER TABLE `tapahtuma` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,9 +151,76 @@ CREATE TABLE `tili` (
 
 LOCK TABLES `tili` WRITE;
 /*!40000 ALTER TABLE `tili` DISABLE KEYS */;
-INSERT INTO `tili` VALUES (1,'12344',904280.4600000001),(2,'12345',179155.71),(3,'12346',96726.83),(4,'22222',6551),(5,'22221',2700);
+INSERT INTO `tili` VALUES (1,'12344',904280.4600000001),(2,'12345',179862.50999999998),(3,'12346',96000.03),(4,'22222',6551),(5,'22221',2700);
 /*!40000 ALTER TABLE `tili` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'testi'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `nosto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `nosto`(in id int, in summa double)
+begin
+start transaction;
+update tili set Tilin_saldo=Tilin_saldo+summa where id_Tili=id and Tilin_saldo+summa>0;
+set @test=row_count();
+if(@test>0) then
+	commit;
+	if (summa>0) then 
+	insert into tapahtuma(Tapahtuma_tyyppi, Rahan_maara, paivays, id_Tili) values('pano', -summa, now(), id);
+	else
+insert into tapahtuma(Tapahtuma_tyyppi, Rahan_maara, paivays, id_Tili) values('otto', -summa, now(), id);
+end if;
+else
+Rollback;
+end if;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `siirto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `siirto`(in id varchar(255), in id2 int, in summa double)
+begin
+start transaction;
+update tili set Tilin_saldo=Tilin_saldo+summa where Tilinumero=id and Tilin_saldo+summa>0;
+update tili set Tilin_saldo=Tilin_saldo-summa where id_Tili=id2 and Tilin_saldo-summa>0;
+set @testi=row_count();
+If(@testi>0) then
+commit;
+/*if(id>0) then*/
+insert into tapahtuma(Tapahtuma_tyyppi, Rahan_maara, paivays,id_Tili) values('pano', summa, now(),(select id_Tili from tili where Tilinumero=id));
+/*else*/
+insert into tapahtuma(Tapahtuma_tyyppi, Rahan_maara, paivays,id_Tili) values('otto', summa, now(), id2);
+/*end if;*/
+else
+rollback;
+end if;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -164,4 +231,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-27 12:03:56
+-- Dump completed on 2021-04-28  9:19:12
